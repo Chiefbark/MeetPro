@@ -1,75 +1,40 @@
 package com.example.meetpro.model;
 
 public class User {
-
+    // The id of the User
     private int id;
+    // The name of the User
     private String name;
+    // The surname of the User
     private String surname;
+    // The phone of the User
     private int phone;
+    // The mail of the User
     private String mail;
+    // The password of the User
     private String password;
+    // The description about the User
+    private String description;
 
     /**
      * Constructor of the User
-     *
-     * @param id      The id of the User
-     * @param name    The name of the User
-     * @param surname The surname of the User
-     * @param phone   The phone of the User
-     * @param mail    The mail of the User
      */
-    public User(int id, String name, String surname, int phone, String mail) {
-        this.id = id;
-        this.name = name;
-        this.surname = surname;
-        this.phone = phone;
-        this.mail = mail;
-    }
-
-    /**
-     * Constructor og the User
-     *
-     * @param id       The id of the User
-     * @param name     The name of the User
-     * @param surname  The surname of the User
-     * @param phone    The phone of the User
-     * @param mail     The mail of the User
-     * @param password The password of the User
-     */
-    public User(int id, String name, String surname, int phone, String mail, String password) {
-        this.id = id;
-        this.name = name;
-        this.surname = surname;
-        this.phone = phone;
-        this.mail = mail;
-        this.password = password;
+    public User() {
     }
 
     /**
      * Constructor of the User
      *
-     * @param name    The name of the User
-     * @param surname The surname of the User
-     * @param phone   The phone of the User
-     * @param mail    The mail of the User
+     * @param id          The id of the User
+     * @param name        The name of the User
+     * @param surname     The surname of the User
+     * @param phone       The phone of the User
+     * @param mail        The mail of the User
+     * @param password    The password of the User
+     * @param description The description about the User
      */
-    public User(String name, String surname, int phone, String mail) {
-        this.name = name;
-        this.surname = surname;
-        this.phone = phone;
-        this.mail = mail;
-    }
-
-    /**
-     * Constructor og the User
-     *
-     * @param name     The name of the User
-     * @param surname  The surname of the User
-     * @param phone    The phone of the User
-     * @param mail     The mail of the User
-     * @param password The password of the User
-     */
-    public User(String name, String surname, int phone, String mail, String password) {
+    public User(int id, String name, String surname, int phone, String mail, String password, String description) {
+        this.id = id;
         this.name = name;
         this.surname = surname;
         this.phone = phone;
@@ -183,5 +148,23 @@ public class User {
      */
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    /**
+     * Returns the description of the User
+     *
+     * @return The description of the User
+     */
+    public String getDescription() {
+        return description;
+    }
+
+    /**
+     * Sets the description of the User
+     *
+     * @param description The new description of the User
+     */
+    public void setDescription(String description) {
+        this.description = description;
     }
 }
