@@ -4,6 +4,25 @@ import com.example.meetpro.model.User;
 import com.example.meetpro.model.UserList;
 
 public class DAOUser {
+    // The connection to the database
+    private DBConn conn;
+
+    /**
+     * Constructor of the DAOUser
+     */
+    private DAOUser() {
+        if (this.conn == null)
+            this.conn = new DBConn();
+    }
+
+    /**
+     * Returns an instance of the DAOUser
+     *
+     * @return An instance of the DAOUser
+     */
+    public static DAOUser getInstance() {
+        return new DAOUser();
+    }
 
     /**
      * Inserts a new User into the database

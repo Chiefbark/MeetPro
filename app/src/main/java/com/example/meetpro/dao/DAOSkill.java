@@ -4,6 +4,25 @@ import com.example.meetpro.model.Skill;
 import com.example.meetpro.model.SkillList;
 
 public class DAOSkill {
+    // The connection to the database
+    private DBConn conn;
+
+    /**
+     * Constructor of the DAOSKill
+     */
+    private DAOSkill() {
+        if (this.conn == null)
+            this.conn = new DBConn();
+    }
+
+    /**
+     * Returns an instance of the DAOSkill
+     *
+     * @return An instance of the DAOSkill
+     */
+    public static DAOSkill getInstance() {
+        return new DAOSkill();
+    }
 
     /**
      * Inserts a new Skill into the database
