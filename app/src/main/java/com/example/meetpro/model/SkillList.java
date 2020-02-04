@@ -6,7 +6,7 @@ public class SkillList {
 
     private ArrayList<Skill> list;
 
-    public void addUser(Skill skill) {
+    public void addSkill(Skill skill) {
         this.list.add(skill);
     }
 
