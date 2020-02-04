@@ -40,6 +40,7 @@ public class User {
         this.phone = phone;
         this.mail = mail;
         this.password = password;
+        this.description = description;
     }
 
     /**
