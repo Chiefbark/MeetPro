@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="40dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/imageView5"
+            android:layout_width="130dp"
+            android:layout_height="91dp"
+            android:layout_marginEnd="8dp"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/photo_sample" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/distance"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat"
+                android:text="Estatus del match"
+                android:textSize="8dp" />
+
+
+            <TextView
+                android:id="@+id/name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat"
+                android:text="Joe Doe"
+                android:textColor="@color/BrandBlue"
+                android:textSize="16dp" />
+
+            <TextView
+                android:id="@+id/sector"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat"
+                android:text="Sector de estudio"
+                android:textSize="8dp" />
+
+            <TextView
+                android:id="@+id/profesion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#FFFFFF"
+                android:fontFamily="@font/montserrat"
+                android:text="Programador Front"
+                android:textColor="@color/BrandBlue"
+                android:textSize="16dp" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/see_profile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/button_blue"
+                    android:fontFamily="@font/montserrat"
+                    android:minHeight="15dp"
+                    android:text="Ver Perfil"
+                    android:textColor="#FFFFFF"
+                    android:textSize="6dp" />
+
+                <Button
+                    android:id="@+id/unmatch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/button_red"
+                    android:fontFamily="@font/montserrat"
+                    android:minHeight="15dp"
+                    android:text="UnMatch"
+                    android:textColor="#FFFFFF"
+                    android:textSize="6dp" />
+
+                <Button
+                    android:id="@+id/match"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/button_green"
+                    android:fontFamily="@font/montserrat"
+                    android:minHeight="15dp"
+                    android:text="match"
+                    android:textColor="#FFFFFF"
+                    android:textSize="6dp" />
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+</LinearLayout>

@@ -6,16 +6,19 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-public class MainActivity extends AppCompatActivity {
+import com.example.meetpro.R;
+
+public class Register extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.register);
     }
 
     public void onClickRegister(View v){
-        Intent answer = new Intent(MainActivity.this, Register.class);
+        Intent answer = new Intent(Register.this, Register.class);
         startActivity(answer);
     }
 }

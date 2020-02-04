@@ -3,4 +3,5 @@
     <string name="iniciar_ses">INICIAR SESION</string>
     <string name="crear_cuenta">CREAR CUENTA</string>
     <string name="crear_cuenta_HELP">¿Nuevo en la Plataforma?</string>
+    <string name="register">REGISTER</string>
 </resources>
