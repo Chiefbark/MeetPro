@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/backgroundinitial"
-    tools:context=".MainActivity"
+    tools:context=".Main"
 
     >
 
@@ -16,21 +16,22 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="190dp"
         android:layout_marginBottom="191dp"
-        app:layout_constraintBottom_toTopOf="@+id/login"
+        app:layout_constraintBottom_toTopOf="@id/login"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/iconmeet" />
+        app:srcCompat="@drawable/logo" />
 
     <Button
         android:id="@+id/login"
         android:layout_width="220dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="177dp"
-        android:background="@drawable/button_white"
+        android:background="@drawable/button"
+        android:backgroundTint="#FFFFFF"
         android:fontFamily="@font/montserrat"
         android:text="@string/iniciar_ses"
-        android:textColor="@color/BrandBlue"
+        android:textColor="@color/colorPrimary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -40,13 +41,13 @@
         android:layout_width="220dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="19dp"
-        android:background="@drawable/button_white_outline"
+        android:background="@drawable/button_outline_white"
         android:fontFamily="@font/montserrat"
         android:onClick="onClickRegister"
         android:text="@string/crear_cuenta"
         android:textColor="@android:color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/login" />
+        app:layout_constraintTop_toBottomOf="@id/login" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
