@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ProfileSelf">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="128dp"
+        android:layout_height="194dp"
+        android:src="@drawable/photo_sample"
+        tools:layout_editor_absoluteX="141dp"
+        tools:layout_editor_absoluteY="72dp" />
+
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/montserrat_bold"
+        android:text="Joe Doe"
+        android:textColor="@color/BrandBlue"
+        android:textSize="40dp"
+        tools:layout_editor_absoluteX="125dp"
+        tools:layout_editor_absoluteY="285dp" />
+
+    <TextView
+        android:id="@+id/sector"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/montserrat"
+        android:text="Sector de estudio"
+        android:textSize="14dp"
+        tools:layout_editor_absoluteX="147dp"
+        tools:layout_editor_absoluteY="341dp" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="323dp"
+        android:layout_height="92dp"
+        android:text="Breve descripcion del usuario, lo que el quiera informar, puede poner algun estudio aqui o en donde trabaja actualmente, mas que todo porque no se que tanto quiera la gente publicar su info"
+        android:textColor="@color/BrandBlue"
+        tools:layout_editor_absoluteX="44dp"
+        tools:layout_editor_absoluteY="378dp" />
+</androidx.constraintlayout.widget.ConstraintLayout>
