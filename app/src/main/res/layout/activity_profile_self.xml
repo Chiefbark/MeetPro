@@ -36,13 +36,43 @@
         tools:layout_editor_absoluteY="341dp" />
 
     <TextView
+        android:id="@+id/sector2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/montserrat"
+        android:text="Profesion: Programador"
+        android:textSize="14dp"
+        tools:layout_editor_absoluteX="44dp"
+        tools:layout_editor_absoluteY="459dp" />
+
+    <TextView
+        android:id="@+id/sector3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/montserrat"
+        android:text="Joe.Doe@mail.com"
+        android:textSize="14dp"
+        tools:layout_editor_absoluteX="79dp"
+        tools:layout_editor_absoluteY="524dp" />
+
+    <TextView
+        android:id="@+id/sector5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/montserrat"
+        android:text="999000999"
+        android:textSize="14dp"
+        tools:layout_editor_absoluteX="79dp"
+        tools:layout_editor_absoluteY="554dp" />
+
+    <TextView
         android:id="@+id/textView2"
-        android:layout_width="323dp"
-        android:layout_height="92dp"
+        android:layout_width="319dp"
+        android:layout_height="82dp"
         android:text="Breve descripcion del usuario, lo que el quiera informar, puede poner algun estudio aqui o en donde trabaja actualmente, mas que todo porque no se que tanto quiera la gente publicar su info"
         android:textColor="@color/BrandBlue"
-        tools:layout_editor_absoluteX="72dp"
-        tools:layout_editor_absoluteY="488dp" />
+        tools:layout_editor_absoluteX="44dp"
+        tools:layout_editor_absoluteY="377dp" />
 
     <View
         android:id="@+id/divider"
