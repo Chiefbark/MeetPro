@@ -14,8 +14,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
-    public void onClickRegister(View v){
-        Intent answer = new Intent(MainActivity.this, ProfileSelf.class);
+    public void onClickRegister(View v) {
+        Intent answer = new Intent(MainActivity.this, Register.class);
         startActivity(answer);
     }
 }
