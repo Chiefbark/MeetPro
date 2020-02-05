@@ -1,0 +1,114 @@
+{
+  "project_info": {
+    "project_number": "233966209513",
+    "firebase_url": "https://crudandroid-77e06.firebaseio.com",
+    "project_id": "crudandroid-77e06",
+    "storage_bucket": "crudandroid-77e06.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:233966209513:android:1d27ab779280a1479a6378",
+        "android_client_info": {
+          "package_name": "com.CRUD.firebase"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "233966209513-bjs7a512d6f61d0ig0i5mls1dtm23n2i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC_nMDdVdY80LuAWpKjReWndcYpBe6xnVc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "233966209513-bjs7a512d6f61d0ig0i5mls1dtm23n2i.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:233966209513:android:48bfb8b2d66bafbe9a6378",
+        "android_client_info": {
+          "package_name": "com.example.crud_firebase"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "233966209513-i3f1v4mam51k1nuis6ie1graqrth62lu.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.crud_firebase",
+            "certificate_hash": "35fc6dcbb10e0cd8c0563b5fe289c76aaf76a316"
+          }
+        },
+        {
+          "client_id": "233966209513-bjs7a512d6f61d0ig0i5mls1dtm23n2i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC_nMDdVdY80LuAWpKjReWndcYpBe6xnVc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "233966209513-bjs7a512d6f61d0ig0i5mls1dtm23n2i.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:233966209513:android:e962e1739d0a34f09a6378",
+        "android_client_info": {
+          "package_name": "com.example.meetpro"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "233966209513-pik3979bvd9r8v45vr2hkucjfca0uk32.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.meetpro",
+            "certificate_hash": "c6036b07f3f12b4fb0be70b601636ce645578dc3"
+          }
+        },
+        {
+          "client_id": "233966209513-bjs7a512d6f61d0ig0i5mls1dtm23n2i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC_nMDdVdY80LuAWpKjReWndcYpBe6xnVc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "233966209513-bjs7a512d6f61d0ig0i5mls1dtm23n2i.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
