@@ -41,6 +41,16 @@
         android:layout_height="92dp"
         android:text="Breve descripcion del usuario, lo que el quiera informar, puede poner algun estudio aqui o en donde trabaja actualmente, mas que todo porque no se que tanto quiera la gente publicar su info"
         android:textColor="@color/BrandBlue"
-        tools:layout_editor_absoluteX="44dp"
-        tools:layout_editor_absoluteY="378dp" />
+        tools:layout_editor_absoluteX="72dp"
+        tools:layout_editor_absoluteY="488dp" />
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="350dp"
+        android:layout_height="3dp"
+        android:background="@color/BrandBlue"
+        android:backgroundTint="@color/BrandBlue"
+        android:foregroundTint="@color/BrandBlue"
+        tools:layout_editor_absoluteX="30dp"
+        tools:layout_editor_absoluteY="365dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
