@@ -168,7 +168,7 @@
             android:paddingRight="13dp"
             android:paddingBottom="3dp"
             android:text="skill"
-            android:textColor="#FFFFFF" />
+            android:textColor="@android:color/white" />
 
         <TextView
             android:id="@+id/skill_2"
@@ -184,7 +184,7 @@
             android:paddingRight="13dp"
             android:paddingBottom="3dp"
             android:text="skill"
-            android:textColor="#FFFFFF" />
+            android:textColor="@android:color/white" />
 
         <TextView
             android:id="@+id/skill_3"
@@ -200,7 +200,7 @@
             android:paddingRight="13dp"
             android:paddingBottom="3dp"
             android:text="skill"
-            android:textColor="#FFFFFF" />
+            android:textColor="@android:color/white" />
 
         <TextView
             android:id="@+id/skill_4"
@@ -215,7 +215,7 @@
             android:paddingRight="13dp"
             android:paddingBottom="3dp"
             android:text="skill"
-            android:textColor="#FFFFFF" />
+            android:textColor="@android:color/white" />
 
     </LinearLayout>
 
@@ -223,14 +223,12 @@
         android:id="@+id/edit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:layout_marginBottom="40dp"
         android:clickable="true"
-        app:backgroundTint="@color/colorPrimaryDark"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:src="@drawable/icon_edit"
+        app:backgroundTint="@color/colorPrimary"
+        app:fabCustomSize="50dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/skills"
-        app:srcCompat="@android:drawable/ic_menu_edit" />
+        app:layout_constraintTop_toTopOf="@+id/header" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
