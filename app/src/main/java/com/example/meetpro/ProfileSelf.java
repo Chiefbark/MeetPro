@@ -10,7 +10,6 @@ public class ProfileSelf extends Template {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         this.addContent(R.layout.activity_profile_self);
     }
 }

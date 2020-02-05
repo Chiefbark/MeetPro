@@ -4,83 +4,219 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="20dp"
     tools:context=".ProfileSelf">
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="128dp"
-        android:layout_height="194dp"
-        android:src="@drawable/photo_sample"
-        tools:layout_editor_absoluteX="141dp"
-        tools:layout_editor_absoluteY="72dp" />
-
-    <TextView
-        android:id="@+id/name"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/header"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/montserrat_bold"
-        android:text="Joe Doe"
-        android:textColor="@color/BrandBlue"
-        android:textSize="40dp"
-        tools:layout_editor_absoluteX="125dp"
-        tools:layout_editor_absoluteY="285dp" />
+        tools:layout_editor_absoluteX="20dp"
+        tools:layout_editor_absoluteY="20dp">
 
-    <TextView
-        android:id="@+id/sector"
+        <ImageView
+            android:id="@+id/imagen"
+            android:layout_width="128dp"
+            android:layout_height="194dp"
+            android:src="@drawable/photo_sample"
+            tools:layout_editor_absoluteX="122dp" />
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat_bold"
+            android:text="Joe Doe"
+            android:textColor="@color/BrandBlue"
+            android:textSize="40dp"
+            tools:layout_editor_absoluteX="106dp"
+            tools:layout_editor_absoluteY="194dp" />
+
+        <TextView
+            android:id="@+id/sector"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat"
+            android:text="Sector de estudio"
+            android:textSize="14dp"
+            tools:layout_editor_absoluteX="125dp"
+            tools:layout_editor_absoluteY="250dp" />
+
+        <View
+            android:id="@+id/divider"
+            android:layout_width="350dp"
+            android:layout_height="3dp"
+            android:background="@color/BrandBlue"
+            android:backgroundTint="@color/BrandBlue"
+            android:foregroundTint="@color/BrandBlue"
+            tools:layout_editor_absoluteX="11dp" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/body"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/montserrat"
-        android:text="Sector de estudio"
-        android:textSize="14dp"
-        tools:layout_editor_absoluteX="147dp"
-        tools:layout_editor_absoluteY="341dp" />
+        app:layout_constraintTop_toBottomOf="@+id/header"
+        tools:layout_editor_absoluteX="20dp">
 
-    <TextView
-        android:id="@+id/sector2"
-        android:layout_width="wrap_content"
+        <TextView
+            android:id="@+id/profesion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat"
+            android:text="Profesion: Programador"
+            android:textSize="14dp"
+            tools:layout_editor_absoluteX="26dp"
+            tools:layout_editor_absoluteY="82dp" />
+
+        <TextView
+            android:id="@+id/telefono"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat"
+            android:text="999000999"
+            android:textColor="@color/BrandBlue"
+            android:textSize="14dp"
+            tools:layout_editor_absoluteX="60dp"
+            tools:layout_editor_absoluteY="122dp" />
+
+        <ImageView
+            android:id="@+id/phone_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/phone_icon"
+            tools:layout_editor_absoluteX="29dp"
+            tools:layout_editor_absoluteY="122dp" />
+
+        <TextView
+            android:id="@+id/email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat"
+            android:text="Joe.Doe@mail.com"
+            android:textColor="@color/BrandBlue"
+            android:textSize="14dp"
+            tools:layout_editor_absoluteX="59dp"
+            tools:layout_editor_absoluteY="102dp" />
+
+        <TextView
+            android:id="@+id/descripcion"
+            android:layout_width="319dp"
+            android:layout_height="82dp"
+            android:text="Breve descripcion del usuario, lo que el quiera informar, puede poner algun estudio aqui o en donde trabaja actualmente, mas que todo porque no se que tanto quiera la gente publicar su info"
+            android:textColor="@color/BrandBlue"
+            tools:layout_editor_absoluteX="26dp" />
+
+        <ImageView
+            android:id="@+id/email_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/email_icon"
+            tools:layout_editor_absoluteX="27dp"
+            tools:layout_editor_absoluteY="102dp" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <LinearLayout
+        android:id="@+id/skillGrid"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/montserrat"
-        android:text="Profesion: Programador"
-        android:textSize="14dp"
-        tools:layout_editor_absoluteX="44dp"
-        tools:layout_editor_absoluteY="459dp" />
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        tools:layout_editor_absoluteY="20dp">
 
-    <TextView
-        android:id="@+id/sector3"
-        android:layout_width="wrap_content"
+        <TextView
+            android:id="@+id/skill_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/button_blue"
+            android:fontFamily="@font/montserrat"
+            android:paddingLeft="13dp"
+            android:paddingTop="3dp"
+            android:paddingRight="13dp"
+            android:paddingBottom="3dp"
+            android:text="skill"
+            android:textColor="#FFFFFF" />
+
+        <TextView
+            android:id="@+id/skill_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/button_blue"
+            android:fontFamily="@font/montserrat"
+            android:paddingLeft="13dp"
+            android:paddingTop="3dp"
+            android:paddingRight="13dp"
+            android:paddingBottom="3dp"
+            android:text="skill"
+            android:textColor="#FFFFFF" />
+
+        <TextView
+            android:id="@+id/skill_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/button_blue"
+            android:fontFamily="@font/montserrat"
+            android:paddingLeft="13dp"
+            android:paddingTop="3dp"
+            android:paddingRight="13dp"
+            android:paddingBottom="3dp"
+            android:text="skill"
+            android:textColor="#FFFFFF" />
+
+        <TextView
+            android:id="@+id/skill_4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/button_blue"
+            android:fontFamily="@font/montserrat"
+            android:paddingLeft="13dp"
+            android:paddingTop="3dp"
+            android:paddingRight="13dp"
+            android:paddingBottom="3dp"
+            android:text="skill"
+            android:textColor="#FFFFFF" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/buttonGrid"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/montserrat"
-        android:text="Joe.Doe@mail.com"
-        android:textSize="14dp"
-        tools:layout_editor_absoluteX="79dp"
-        tools:layout_editor_absoluteY="524dp" />
+        android:layout_marginBottom="40dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent">
 
-    <TextView
-        android:id="@+id/sector5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/montserrat"
-        android:text="999000999"
-        android:textSize="14dp"
-        tools:layout_editor_absoluteX="79dp"
-        tools:layout_editor_absoluteY="554dp" />
+        <Button
+            android:id="@+id/no_interesado"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/button_red"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="no interesado"
+            android:textColor="#FFFFFF" />
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="319dp"
-        android:layout_height="82dp"
-        android:text="Breve descripcion del usuario, lo que el quiera informar, puede poner algun estudio aqui o en donde trabaja actualmente, mas que todo porque no se que tanto quiera la gente publicar su info"
-        android:textColor="@color/BrandBlue"
-        tools:layout_editor_absoluteX="44dp"
-        tools:layout_editor_absoluteY="377dp" />
+        <Button
+            android:id="@+id/match"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_green"
+            android:text="Match"
+            android:textColor="#FFFFFF" />
+    </LinearLayout>
 
-    <View
-        android:id="@+id/divider"
-        android:layout_width="350dp"
-        android:layout_height="3dp"
-        android:background="@color/BrandBlue"
-        android:backgroundTint="@color/BrandBlue"
-        android:foregroundTint="@color/BrandBlue"
-        tools:layout_editor_absoluteX="30dp"
-        tools:layout_editor_absoluteY="365dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

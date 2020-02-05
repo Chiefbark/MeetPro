@@ -18,7 +18,6 @@ public class Template extends AppCompatActivity {
     protected void addContent(int idLayout) {
         LayoutInflater inflater = getLayoutInflater();
         View v = inflater.inflate(idLayout, null);
-
         ((LinearLayout) findViewById(R.id.content)).addView(v);
     }
 }
