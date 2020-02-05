@@ -6,16 +6,16 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-public class MainActivity extends AppCompatActivity {
+public class Main extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.main);
     }
 
     public void onClickRegister(View v) {
-        Intent answer = new Intent(MainActivity.this, ProfileSelf.class);
-        startActivity(answer);
+        Intent n = new Intent(Main.this, ProfileSelf.class);
+        startActivity(n);
     }
 }
