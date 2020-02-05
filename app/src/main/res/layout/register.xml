@@ -2,7 +2,6 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/LinearLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -57,10 +56,10 @@
                     android:layout_marginTop="40dp"
                     android:layout_marginBottom="40dp"
                     android:paddingBottom="20dp"
-                    app:layout_constraintBottom_toTopOf="@+id/register_button"
+                    app:layout_constraintBottom_toTopOf="@id/register"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/header">
+                    app:layout_constraintTop_toBottomOf="@id/header">
 
                     <EditText
                         android:id="@+id/nombre"
@@ -92,14 +91,14 @@
                         android:padding="20dp"
                         android:textColorHint="@android:color/darker_gray"
                         android:textSize="14sp"
-                        app:layout_constraintBottom_toTopOf="@+id/telefono"
+                        app:layout_constraintBottom_toTopOf="@id/phone"
                         app:layout_constraintLeft_toLeftOf="parent"
                         app:layout_constraintRight_toRightOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/nombre"
+                        app:layout_constraintTop_toBottomOf="@id/nombre"
                         tools:layout_editor_absoluteX="55dp" />
 
                     <EditText
-                        android:id="@+id/telefono"
+                        android:id="@+id/phone"
                         android:layout_width="300dp"
                         android:layout_height="wrap_content"
                         android:backgroundTint="@color/BrandBlue"
@@ -110,10 +109,10 @@
                         android:padding="20dp"
                         android:textColorHint="@android:color/darker_gray"
                         android:textSize="14sp"
-                        app:layout_constraintBottom_toTopOf="@+id/email"
+                        app:layout_constraintBottom_toTopOf="@id/email"
                         app:layout_constraintLeft_toLeftOf="parent"
                         app:layout_constraintRight_toRightOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/apellido"
+                        app:layout_constraintTop_toBottomOf="@id/apellido"
                         tools:layout_editor_absoluteX="55dp" />
 
                     <ImageView
@@ -121,9 +120,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="15dp"
-                        app:layout_constraintBottom_toBottomOf="@+id/email"
-                        app:layout_constraintStart_toStartOf="@+id/email"
-                        app:layout_constraintTop_toTopOf="@+id/email"
+                        app:layout_constraintBottom_toBottomOf="@id/email"
+                        app:layout_constraintStart_toStartOf="@id/email"
+                        app:layout_constraintTop_toTopOf="@id/email"
                         app:srcCompat="@drawable/email_icon" />
 
                     <EditText
@@ -139,10 +138,10 @@
                         android:paddingStart="50dp"
                         android:textColorHint="@android:color/darker_gray"
                         android:textSize="14sp"
-                        app:layout_constraintBottom_toTopOf="@+id/password"
+                        app:layout_constraintBottom_toTopOf="@id/password"
                         app:layout_constraintLeft_toLeftOf="parent"
                         app:layout_constraintRight_toRightOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/telefono"
+                        app:layout_constraintTop_toBottomOf="@id/phone"
                         tools:layout_editor_absoluteX="55dp" />
 
                     <ImageView
@@ -150,9 +149,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="15dp"
-                        app:layout_constraintBottom_toBottomOf="@+id/password"
-                        app:layout_constraintStart_toStartOf="@+id/password"
-                        app:layout_constraintTop_toTopOf="@+id/password"
+                        app:layout_constraintBottom_toBottomOf="@id/password"
+                        app:layout_constraintStart_toStartOf="@id/password"
+                        app:layout_constraintTop_toTopOf="@id/password"
                         app:srcCompat="@drawable/password_icon" />
 
                     <EditText
@@ -171,14 +170,14 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintLeft_toLeftOf="parent"
                         app:layout_constraintRight_toRightOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/email"
+                        app:layout_constraintTop_toBottomOf="@id/email"
                         tools:layout_editor_absoluteX="55dp"
                         tools:layout_editor_absoluteY="531dp" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <Button
-                    android:id="@+id/register_button"
+                    android:id="@+id/register"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -193,7 +192,7 @@
                     android:textColor="@color/BrandBlue"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/body" />
+                    app:layout_constraintTop_toBottomOf="@id/body" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>
