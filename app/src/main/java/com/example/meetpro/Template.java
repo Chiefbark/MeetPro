@@ -27,6 +27,7 @@ public class Template extends AppCompatActivity {
                 else {
                     Intent n = new Intent(Template.this, ProfileSelf.class);
                     startActivity(n);
+                    Template.this.finish();
                 }
             }
         });
