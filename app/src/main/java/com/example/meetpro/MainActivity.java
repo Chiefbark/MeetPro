@@ -15,7 +15,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onClickRegister(View v){
-        Intent answer = new Intent(MainActivity.this, Register.class);
+        Intent answer = new Intent(MainActivity.this, ProfileSelf.class);
         startActivity(answer);
     }
 }
