@@ -2,6 +2,8 @@ package com.example.meetpro;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -15,18 +17,56 @@ public class Template extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.template);
 
+        final boolean hasConfirmation = getIntent().getBooleanExtra("hasConfirmation", false);
+
         findViewById(R.id.account).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent n = new Intent(Template.this, ProfileSelf.class);
-                startActivity(n);
+                if (hasConfirmation)
+                    showConfirmDialog(ProfileSelf.class);
+                else {
+                    Intent n = new Intent(Template.this, ProfileSelf.class);
+                    startActivity(n);
+                }
             }
         });
     }
 
+    /**
+     * @param idLayout
+     */
     protected void addContent(int idLayout) {
         LayoutInflater inflater = getLayoutInflater();
         View v = inflater.inflate(idLayout, null);
         ((LinearLayout) findViewById(R.id.content)).addView(v);
+    }
+
+    /**
+     *
+     */
+    private void showConfirmDialog(final Class target) {
+        final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+
+        alertDialogBuilder
+                .setTitle("Descartar cambios")
+                .setMessage("Los cambios realizados no se guardarán")
+                .setCancelable(false)
+                .setPositiveButton("Descartar", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int id) {
+                        Intent n = new Intent(Template.this, target);
+                        startActivity(n);
+                        Template.this.finish();
+                    }
+                })
+                .setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+
+        AlertDialog alertDialog = alertDialogBuilder.create();
+        alertDialog.show();
     }
 }
