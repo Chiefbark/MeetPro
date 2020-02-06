@@ -1,0 +1,371 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Edit">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/header"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toTopOf="@id/body"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
+                        android:id="@+id/photo"
+                        android:layout_width="89dp"
+                        android:layout_height="120dp"
+                        android:layout_marginStart="147dp"
+                        android:layout_marginTop="20dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.152"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.368"
+                        app:srcCompat="@drawable/photo_sample" />
+
+                    <com.google.android.material.floatingactionbutton.FloatingActionButton
+                        android:id="@+id/editPhoto"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="56dp"
+                        android:layout_marginTop="150dp"
+                        android:clickable="true"
+                        android:src="@drawable/camera_icon"
+                        app:backgroundTint="@color/colorPrimary"
+                        app:fabCustomSize="50dp"
+                        app:layout_constraintBottom_toBottomOf="@+id/photo"
+                        app:layout_constraintStart_toStartOf="@+id/photo"
+                        app:layout_constraintTop_toTopOf="@+id/photo"
+                        app:layout_constraintVertical_bias="0.85" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/body"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/header"
+                    tools:layout_editor_absoluteY="163dp">
+
+                    <EditText
+                        android:id="@+id/name"
+                        android:layout_width="330dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="25dp"
+                        android:layout_marginBottom="20dp"
+                        android:backgroundTint="@color/colorPrimary"
+                        android:ems="10"
+                        android:hint="Joe"
+                        android:includeFontPadding="false"
+                        android:inputType="textPersonName"
+                        android:padding="20dp"
+                        android:textColorHint="@android:color/darker_gray"
+                        android:textSize="14sp"
+                        app:layout_constraintBottom_toTopOf="@id/lastName"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <EditText
+                        android:id="@+id/lastName"
+                        android:layout_width="330dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="20dp"
+                        android:backgroundTint="@color/colorPrimary"
+                        android:ems="10"
+                        android:hint="Doe"
+                        android:includeFontPadding="false"
+                        android:inputType="textPersonName"
+                        android:padding="20dp"
+                        android:textColorHint="@android:color/darker_gray"
+                        android:textSize="14sp"
+                        app:layout_constraintBottom_toTopOf="@id/phone"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/name" />
+
+                    <EditText
+                        android:id="@+id/phone"
+                        android:layout_width="330dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="20dp"
+                        android:backgroundTint="@color/colorPrimary"
+                        android:ems="10"
+                        android:hint="9090909090"
+                        android:includeFontPadding="false"
+                        android:inputType="textPersonName"
+                        android:padding="20dp"
+                        android:textColorHint="@android:color/darker_gray"
+                        android:textSize="14sp"
+                        app:layout_constraintBottom_toTopOf="@id/email"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/lastName" />
+
+                    <ImageView
+                        android:id="@+id/emailIcon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="15dp"
+                        app:layout_constraintBottom_toBottomOf="@id/email"
+                        app:layout_constraintLeft_toLeftOf="@id/email"
+                        app:layout_constraintTop_toTopOf="@id/email"
+                        app:srcCompat="@drawable/email_icon"
+                        tools:layout_editor_absoluteX="71dp"
+                        tools:layout_editor_absoluteY="216dp" />
+
+                    <EditText
+                        android:id="@+id/email"
+                        android:layout_width="330dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="20dp"
+                        android:backgroundTint="@color/colorPrimary"
+                        android:ems="10"
+                        android:hint="Email..."
+                        android:includeFontPadding="false"
+                        android:inputType="textEmailAddress"
+                        android:padding="20dp"
+                        android:paddingStart="50dp"
+                        android:textColorHint="@android:color/darker_gray"
+                        android:textSize="14sp"
+                        app:layout_constraintBottom_toTopOf="@id/sectorSpinner"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/phone" />
+
+                    <TextView
+                        android:id="@+id/changePassword"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="60dp"
+                        android:fontFamily="@font/montserrat"
+                        android:text="Cambiar Contraseña..."
+                        android:textColor="#3C9DF3"
+                        app:layout_constraintBottom_toBottomOf="@id/email"
+                        app:layout_constraintLeft_toLeftOf="@id/email"
+                        app:layout_constraintTop_toTopOf="@id/email" />
+
+                    <Spinner
+                        android:id="@+id/sectorSpinner"
+                        android:layout_width="330dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="20dp"
+                        app:layout_constraintBottom_toTopOf="@id/profesionSpinner"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/email" />
+
+                    <View
+                        android:id="@+id/sectorDivider"
+                        android:layout_width="330dp"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="40dp"
+                        android:background="@color/colorPrimary"
+                        android:backgroundTint="@color/colorPrimary"
+                        android:foregroundTint="@color/colorPrimary"
+                        app:layout_constraintBottom_toBottomOf="@id/sectorSpinner"
+                        app:layout_constraintLeft_toLeftOf="@id/sectorSpinner"
+                        app:layout_constraintRight_toRightOf="@id/sectorSpinner"
+                        app:layout_constraintTop_toTopOf="@id/sectorSpinner" />
+
+                    <Spinner
+                        android:id="@+id/profesionSpinner"
+                        android:layout_width="330dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="20dp"
+                        app:layout_constraintBottom_toTopOf="@id/address"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/sectorSpinner" />
+
+                    <View
+                        android:id="@+id/profesionDivider"
+                        android:layout_width="330dp"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="40dp"
+                        android:background="@color/colorPrimary"
+                        android:backgroundTint="@color/colorPrimary"
+                        android:foregroundTint="@color/colorPrimary"
+                        app:layout_constraintBottom_toBottomOf="@id/profesionSpinner"
+                        app:layout_constraintLeft_toLeftOf="@id/profesionSpinner"
+                        app:layout_constraintRight_toRightOf="@id/profesionSpinner"
+                        app:layout_constraintTop_toTopOf="@id/profesionSpinner" />
+
+                    <ImageView
+                        android:id="@+id/addressIcon"
+                        android:layout_width="23dp"
+                        android:layout_height="19dp"
+                        android:layout_marginRight="15dp"
+                        app:layout_constraintBottom_toBottomOf="@id/address"
+                        app:layout_constraintRight_toRightOf="@id/address"
+                        app:layout_constraintTop_toTopOf="@id/address"
+                        app:srcCompat="@drawable/location_icon"
+                        tools:layout_editor_absoluteX="320dp"
+                        tools:layout_editor_absoluteY="371dp" />
+
+                    <EditText
+                        android:id="@+id/address"
+                        android:layout_width="330dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="20dp"
+                        android:backgroundTint="@color/colorPrimary"
+                        android:ems="10"
+                        android:hint="Direccion.."
+                        android:includeFontPadding="false"
+                        android:inputType="textPersonName"
+                        android:padding="20dp"
+                        android:textColorHint="@android:color/darker_gray"
+                        android:textSize="14sp"
+                        app:layout_constraintBottom_toTopOf="@id/skills"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/profesionSpinner" />
+
+                    <LinearLayout
+                        android:id="@+id/skills"
+                        android:layout_width="330dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="20dp"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        app:layout_constraintBottom_toTopOf="@id/addSkill"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/address">
+
+                        <TextView
+                            android:id="@+id/skill_1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginRight="10dp"
+                            android:background="@drawable/button"
+                            android:backgroundTint="@color/colorPrimary"
+                            android:fontFamily="@font/montserrat"
+                            android:paddingLeft="13dp"
+                            android:paddingTop="3dp"
+                            android:paddingRight="13dp"
+                            android:paddingBottom="3dp"
+                            android:text="skill"
+                            android:textColor="@android:color/white" />
+
+                        <TextView
+                            android:id="@+id/skill_2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginRight="10dp"
+                            android:background="@drawable/button"
+                            android:backgroundTint="@color/colorPrimary"
+                            android:fontFamily="@font/montserrat"
+                            android:paddingLeft="13dp"
+                            android:paddingTop="3dp"
+                            android:paddingRight="13dp"
+                            android:paddingBottom="3dp"
+                            android:text="skill"
+                            android:textColor="@android:color/white" />
+
+                        <TextView
+                            android:id="@+id/skill_3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginRight="10dp"
+                            android:background="@drawable/button"
+                            android:backgroundTint="@color/colorPrimary"
+                            android:fontFamily="@font/montserrat"
+                            android:paddingLeft="13dp"
+                            android:paddingTop="3dp"
+                            android:paddingRight="13dp"
+                            android:paddingBottom="3dp"
+                            android:text="skill"
+                            android:textColor="@android:color/white" />
+
+                        <TextView
+                            android:id="@+id/skill_4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:background="@drawable/button"
+                            android:backgroundTint="@color/colorPrimary"
+                            android:fontFamily="@font/montserrat"
+                            android:paddingLeft="13dp"
+                            android:paddingTop="3dp"
+                            android:paddingRight="13dp"
+                            android:paddingBottom="3dp"
+                            android:text="skill"
+                            android:textColor="@android:color/white" />
+
+                    </LinearLayout>
+
+                    <EditText
+                        android:id="@+id/addSkill"
+                        android:layout_width="330dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="20dp"
+                        android:backgroundTint="@color/colorPrimary"
+                        android:ems="10"
+                        android:hint="Añade un Skill..."
+                        android:includeFontPadding="false"
+                        android:inputType="textPersonName"
+                        android:padding="20dp"
+                        android:textColorHint="@android:color/darker_gray"
+                        android:textSize="14sp"
+                        app:layout_constraintBottom_toBottomOf="parent
+            "
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/skills" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/footer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@id/body"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    >
+
+                    <Button
+                        android:id="@+id/confirmEdit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginBottom="40dp"
+                        android:text="Button"
+                        android:textColor="@color/colorPrimary"
+                        android:background="@drawable/button_outline_blue"
+                        />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

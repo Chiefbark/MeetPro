@@ -4,4 +4,16 @@
     <string name="crear_cuenta">CREAR CUENTA</string>
     <string name="crear_cuenta_HELP">¿Nuevo en la Plataforma?</string>
     <string name="register">REGISTER</string>
+
+    <string-array name="sectoresArray">
+        <item>Sector Informatico</item>
+        <item>Sector Informatico</item>
+        <item>Sector Informatico</item>
+    </string-array>
+
+    <string-array name="profesionArray">
+        <item>Programador Front</item>
+        <item>Programador Back</item>
+        <item>Programador FullStack</item>
+    </string-array>
 </resources>
