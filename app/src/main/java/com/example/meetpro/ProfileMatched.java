@@ -1,12 +1,14 @@
 package com.example.meetpro;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.os.Bundle;
 
-public class ProfileSelf extends Template {
+public class ProfileMatched extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        this.addContent(R.layout.activity_profile_self);
+        setContentView(R.layout.activity_profile_matched);
     }
 }
