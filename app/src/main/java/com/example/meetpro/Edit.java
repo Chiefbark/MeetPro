@@ -4,12 +4,14 @@ import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
-public class Edit extends Template{
+import androidx.appcompat.app.AppCompatActivity;
+
+public class Edit extends Template {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_edit);
+        addContent(R.layout.activity_edit);
 
         Spinner spinner = (Spinner) findViewById(R.id.sectorSpinner);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
