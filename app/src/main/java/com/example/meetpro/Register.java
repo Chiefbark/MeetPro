@@ -16,7 +16,7 @@ public class Register extends AppCompatActivity {
     }
 
     public void onClickRegister(View v){
-        Intent answer = new Intent(Register.this, Register.class);
+        Intent answer = new Intent(Register.this, Edit.class);
         startActivity(answer);
     }
 }

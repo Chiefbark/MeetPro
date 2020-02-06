@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ProfileMatched"></activity>
+        <activity android:name=".Matches"></activity>
+        <activity android:name=".NearYou" />
+        <activity android:name=".ProfileMatched" />
         <activity android:name=".ProfileUnmatched" />
         <activity android:name=".Edit" />
         <activity android:name=".ProfileSelf" />

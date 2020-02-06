@@ -21,6 +21,7 @@
             android:id="@+id/image"
             android:layout_width="128dp"
             android:layout_height="194dp"
+            android:layout_marginTop="40dp"
             android:src="@drawable/photo_sample"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -150,9 +151,11 @@
         android:layout_marginTop="40dp"
         android:gravity="center"
         android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/body">
+        app:layout_constraintTop_toBottomOf="@id/body"
+        app:layout_constraintVertical_bias="0.48000002">
 
         <TextView
             android:id="@+id/skill_1"
@@ -224,6 +227,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:clickable="true"
+        android:onClick="onClickEdit"
         android:src="@drawable/icon_edit"
         app:backgroundTint="@color/colorPrimary"
         app:fabCustomSize="50dp"

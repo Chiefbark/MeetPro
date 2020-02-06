@@ -21,6 +21,7 @@
             android:id="@+id/image"
             android:layout_width="128dp"
             android:layout_height="194dp"
+            android:layout_marginTop="40dp"
             android:src="@drawable/photo_sample"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -76,10 +77,11 @@
             android:id="@+id/description"
             android:layout_width="319dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="32dp"
             android:text="Breve descripcion del usuario, lo que el quiera informar, puede poner algun estudio aqui o en donde trabaja actualmente, mas que todo porque no se que tanto quiera la gente publicar su info"
             android:textColor="@color/colorPrimary"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -94,141 +96,134 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/description" />
 
-        <ImageView
-            android:id="@+id/email_icon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:src="@drawable/email_icon"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/proffesion" />
-
-        <TextView
-            android:id="@+id/email"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:fontFamily="@font/montserrat"
-            android:text="Joe.Doe@mail.com"
-            android:textColor="@color/colorPrimary"
-            android:textIsSelectable="true"
-            android:textSize="14dp"
-            app:layout_constraintBottom_toBottomOf="@id/email_icon"
-            app:layout_constraintStart_toEndOf="@id/email_icon"
-            app:layout_constraintTop_toTopOf="@id/email_icon" />
-
-        <ImageView
-            android:id="@+id/phone_icon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:src="@drawable/phone_icon"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/email" />
-
-        <TextView
-            android:id="@+id/phone"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:fontFamily="@font/montserrat"
-            android:text="999000999"
-            android:textColor="@color/colorPrimary"
-            android:textIsSelectable="true"
-            android:textSize="14dp"
-            app:layout_constraintBottom_toBottomOf="@id/phone_icon"
-            app:layout_constraintStart_toEndOf="@id/phone_icon"
-            app:layout_constraintTop_toTopOf="@id/phone_icon" />
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-    <LinearLayout
-        android:id="@+id/skills"
-        android:layout_width="300dp"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/footer"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:gravity="center"
-        android:orientation="horizontal"
+        android:paddingTop="40dp"
+        android:paddingBottom="40dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/body">
+        app:layout_constraintTop_toBottomOf="@id/body"
+        app:layout_constraintVertical_bias="1.0">
 
-        <TextView
-            android:id="@+id/skill_1"
+        <LinearLayout
+            android:id="@+id/skills"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/skill_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/button"
+                android:backgroundTint="@color/colorPrimary"
+                android:fontFamily="@font/montserrat"
+                android:paddingLeft="13dp"
+                android:paddingTop="3dp"
+                android:paddingRight="13dp"
+                android:paddingBottom="3dp"
+                android:text="skill"
+                android:textColor="@android:color/white" />
+
+            <TextView
+                android:id="@+id/skill_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/button"
+                android:backgroundTint="@color/colorPrimary"
+                android:fontFamily="@font/montserrat"
+                android:paddingLeft="13dp"
+                android:paddingTop="3dp"
+                android:paddingRight="13dp"
+                android:paddingBottom="3dp"
+                android:text="skill"
+                android:textColor="@android:color/white" />
+
+            <TextView
+                android:id="@+id/skill_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/button"
+                android:backgroundTint="@color/colorPrimary"
+                android:fontFamily="@font/montserrat"
+                android:paddingLeft="13dp"
+                android:paddingTop="3dp"
+                android:paddingRight="13dp"
+                android:paddingBottom="3dp"
+                android:text="skill"
+                android:textColor="@android:color/white" />
+
+            <TextView
+                android:id="@+id/skill_4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/button"
+                android:backgroundTint="@color/colorPrimary"
+                android:fontFamily="@font/montserrat"
+                android:paddingLeft="13dp"
+                android:paddingTop="3dp"
+                android:paddingRight="13dp"
+                android:paddingBottom="3dp"
+                android:text="skill"
+                android:textColor="@android:color/white" />
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/notIntereset"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginRight="10dp"
+            android:layout_marginTop="40dp"
             android:background="@drawable/button"
-            android:backgroundTint="@color/colorPrimary"
+            android:backgroundTint="@color/colorRed"
+            android:clickable="true"
             android:fontFamily="@font/montserrat"
-            android:paddingLeft="13dp"
-            android:paddingTop="3dp"
-            android:paddingRight="13dp"
-            android:paddingBottom="3dp"
-            android:text="skill"
-            android:textColor="@android:color/white" />
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:text="No me interesa"
+            android:textColor="#FFFFFF"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/match"
+            app:layout_constraintTop_toBottomOf="@id/skills" />
 
-        <TextView
-            android:id="@+id/skill_2"
+        <Button
+            android:id="@+id/match"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginRight="10dp"
+            android:layout_marginTop="40dp"
             android:background="@drawable/button"
-            android:backgroundTint="@color/colorPrimary"
+            android:backgroundTint="@color/colorGreen"
+            android:clickable="true"
             android:fontFamily="@font/montserrat"
-            android:paddingLeft="13dp"
-            android:paddingTop="3dp"
-            android:paddingRight="13dp"
-            android:paddingBottom="3dp"
-            android:text="skill"
-            android:textColor="@android:color/white" />
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:text="Match"
+            android:textColor="#FFFFFF"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toRightOf="@id/notIntereset"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/skills" />
 
-        <TextView
-            android:id="@+id/skill_3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginRight="10dp"
-            android:background="@drawable/button"
-            android:backgroundTint="@color/colorPrimary"
-            android:fontFamily="@font/montserrat"
-            android:paddingLeft="13dp"
-            android:paddingTop="3dp"
-            android:paddingRight="13dp"
-            android:paddingBottom="3dp"
-            android:text="skill"
-            android:textColor="@android:color/white" />
 
-        <TextView
-            android:id="@+id/skill_4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:background="@drawable/button"
-            android:backgroundTint="@color/colorPrimary"
-            android:fontFamily="@font/montserrat"
-            android:paddingLeft="13dp"
-            android:paddingTop="3dp"
-            android:paddingRight="13dp"
-            android:paddingBottom="3dp"
-            android:text="skill"
-            android:textColor="@android:color/white" />
-
-    </LinearLayout>
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/edit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:clickable="true"
-        android:src="@drawable/icon_edit"
-        app:backgroundTint="@color/colorPrimary"
-        app:fabCustomSize="50dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/header" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
