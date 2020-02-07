@@ -31,6 +31,7 @@
         android:backgroundTint="#FFFFFF"
         android:clickable="true"
         android:fontFamily="@font/montserrat"
+        android:onClick="onClickLogin"
         android:text="@string/iniciar_ses"
         android:textColor="@color/colorPrimary"
         app:layout_constraintBottom_toBottomOf="parent"
