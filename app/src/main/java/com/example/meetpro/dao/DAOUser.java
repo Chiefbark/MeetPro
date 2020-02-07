@@ -1,18 +1,36 @@
 package com.example.meetpro.dao;
 
+import android.util.Log;
+
+import androidx.annotation.NonNull;
+
 import com.example.meetpro.model.User;
 import com.example.meetpro.model.UserList;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class DAOUser {
-    // The connection to the database
-    private DBConn conn;
-
+    private static FirebaseAuth mAuth;
+    private static DatabaseReference mDatabase;
+    private static FirebaseUser mUser;
     /**
      * Constructor of the DAOUser
      */
     private DAOUser() {
-        if (this.conn == null)
-            this.conn = new DBConn();
+        mAuth = FirebaseAuth.getInstance();
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+        mUser = mAuth.getCurrentUser();
     }
 
     /**
@@ -29,10 +47,21 @@ public class DAOUser {
      *
      * @param user The User to insert
      */
-    public static void insert(User user) {
-
+    public static void insert(final User user) {
+        mAuth.createUserWithEmailAndPassword(user.getMail(), user.getPassword());
+        mAuth.signInWithEmailAndPassword(user.getMail(),user.getPassword()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if(task.isSuccessful()){
+                    mUser = mAuth.getCurrentUser();
+                    update(user);
+                }
+            }
+        });
     }
-
+    public static void SignIn(User user){
+        mAuth.signInWithEmailAndPassword(user.getMail(),user.getPassword());
+    }
     /**
      * Selects all the Users from the database
      *
@@ -45,28 +74,55 @@ public class DAOUser {
     /**
      * Selects the User with the specific id from the database
      *
-     * @param id The id of the User to select
+     * @param uid The id of the User to select
      * @return The User selected
      */
-    public static User select(int id) {
-        return null;
+    public static User select(final String uid) {
+        final User[] user = new User[1];
+        FirebaseDatabase.getInstance().getReference().child("users").addListenerForSingleValueEvent
+                (new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        for(DataSnapshot snap:dataSnapshot.getChildren()){
+                            if(uid.equals(snap.getKey().toString())){
+                                String name = snap.child("name").getValue().toString();
+                                String surname = snap.child("surname").getValue().toString();
+                                String phone = snap.child("phone").getValue().toString();
+                                String description = snap.child("description").getValue().toString();
+
+                                user[0] = new User(name,surname,phone,description);
+                                Log.d("usrobj", user.toString());
+                            }
+                        }
+                    }
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
+        return user[0];
     }
 
     /**
      * Updates an User into the database
-     *
      * @param user The User to update
      */
     public static void update(User user) {
+        Map<String,String> map = new HashMap<>(); // HashMap para enviar a la bd
+        map.put("name",user.getName());
+        map.put("surname",user.getSurname());
+        map.put("mail",user.getMail());
+        map.put("description",user.getDescription());
+        map.put("phone",user.getPhone());
+        map.put("location","");
 
+        mDatabase.child("users") // Accedemos al nodo que nos interesa
+                .child(mAuth.getCurrentUser().getUid()) //Accedemos al nodo usuario
+                .setValue(map); // Le mandamos al nodo el mapa
     }
 
-    /**
-     * Deletes an User from the database
-     *
-     * @param id The id of the User to delete
-     */
-    public static void delete(int id) {
-
+    public static void signOut(){
+        mAuth.signOut();
     }
+
 }

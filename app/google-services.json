@@ -81,6 +81,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "233966209513-mfcv7tb3gkuk6f9i4ps0vftfaktv2h07.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.meetpro",
+            "certificate_hash": "eafadbe4964a597c5d10665cd6d85bf0dbe5093d"
+          }
+        },
+        {
           "client_id": "233966209513-pik3979bvd9r8v45vr2hkucjfca0uk32.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {

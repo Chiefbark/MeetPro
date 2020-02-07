@@ -8,18 +8,51 @@ public class User {
     // The surname of the User
     private String surname;
     // The phone of the User
-    private int phone;
+    private String phone;
     // The mail of the User
     private String mail;
     // The password of the User
     private String password;
     // The description about the User
     private String description;
-
+    // The latitude stored about the User
+    private Double latitude;
+    // The longitude stored about the User
+    private Double longitude;
     /**
      * Constructor of the User
      */
     public User() {
+    }
+
+    /**
+     *
+     * @param name
+     * @param surname
+     * @param phone
+     * @param mail
+     * @param description
+     */
+    public User(String name, String surname, String phone, String mail, String description) {
+        this.name = name;
+        this.surname = surname;
+        this.phone = phone;
+        this.mail = mail;
+        this.description = description;
+    }
+
+    /**
+     *
+     * @param name
+     * @param surname
+     * @param mail
+     * @param password
+     */
+    public User(String name, String surname, String mail, String password) {
+        this.name = name;
+        this.surname = surname;
+        this.mail = mail;
+        this.password = password;
     }
 
     /**
@@ -33,7 +66,7 @@ public class User {
      * @param password    The password of the User
      * @param description The description about the User
      */
-    public User(int id, String name, String surname, int phone, String mail, String password, String description) {
+    public User(int id, String name, String surname, String phone, String mail, String password, String description) {
         this.id = id;
         this.name = name;
         this.surname = surname;
@@ -102,7 +135,7 @@ public class User {
      *
      * @return The phone of the User
      */
-    public int getPhone() {
+    public String getPhone() {
         return phone;
     }
 
@@ -111,7 +144,7 @@ public class User {
      *
      * @param phone The new phone of the User
      */
-    public void setPhone(int phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 
@@ -123,7 +156,6 @@ public class User {
     public String getMail() {
         return mail;
     }
-
     /**
      * Sets the mail of the User
      *
@@ -132,7 +164,6 @@ public class User {
     public void setMail(String mail) {
         this.mail = mail;
     }
-
     /**
      * Returns the password of the User
      *
@@ -141,7 +172,6 @@ public class User {
     public String getPassword() {
         return password;
     }
-
     /**
      * Sets the password of the User
      *
@@ -150,7 +180,6 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
-
     /**
      * Returns the description of the User
      *
@@ -167,5 +196,33 @@ public class User {
      */
     public void setDescription(String description) {
         this.description = description;
+    }
+    /**
+     * Reuturns the latitude of the User
+     * @return
+     */
+    public Double getLatitude() {
+        return latitude;
+    }
+    /**
+     * Sets the latitude of the User
+     * @param latitude
+     */
+    public void setLatitude(Double latitude) {
+        this.latitude = latitude;
+    }
+    /**
+     * Reuturns the longitude of the User
+     * @return
+     */
+    public Double getLongitude() {
+        return longitude;
+    }
+    /**
+     * Sets the longitude of the User
+     * @param longitude
+     */
+    public void setLongitude(Double longitude) {
+        this.longitude = longitude;
     }
 }
