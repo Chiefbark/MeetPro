@@ -48,8 +48,8 @@ public class DAOUser {
      * @param user The User to insert
      */
     public static void insert(final User user) {
-        mAuth.createUserWithEmailAndPassword(user.getMail(), user.getPassword());
-        mAuth.signInWithEmailAndPassword(user.getMail(),user.getPassword()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+        mAuth.createUserWithEmailAndPassword(user.getemail(), user.getPassword());
+        mAuth.signInWithEmailAndPassword(user.getemail(),user.getPassword()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
@@ -60,7 +60,7 @@ public class DAOUser {
         });
     }
     public static void SignIn(User user){
-        mAuth.signInWithEmailAndPassword(user.getMail(),user.getPassword());
+        mAuth.signInWithEmailAndPassword(user.getemail(),user.getPassword());
     }
     /**
      * Selects all the Users from the database
@@ -111,7 +111,7 @@ public class DAOUser {
         Map<String,String> map = new HashMap<>(); // HashMap para enviar a la bd
         map.put("name",user.getName());
         map.put("surname",user.getSurname());
-        map.put("mail",user.getMail());
+        map.put("mail",user.getemail());
         map.put("description",user.getDescription());
         map.put("phone",user.getPhone());
         map.put("location","");

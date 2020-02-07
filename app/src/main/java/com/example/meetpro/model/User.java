@@ -9,8 +9,8 @@ public class User {
     private String surname;
     // The phone of the User
     private String phone;
-    // The mail of the User
-    private String mail;
+    // The email of the User
+    private String email;
     // The password of the User
     private String password;
     // The description about the User
@@ -19,6 +19,11 @@ public class User {
     private Double latitude;
     // The longitude stored about the User
     private Double longitude;
+    // Job stores about the User
+    private String job;
+    // Sector of stored about the User
+    private String sector;
+
     /**
      * Constructor of the User
      */
@@ -30,14 +35,14 @@ public class User {
      * @param name
      * @param surname
      * @param phone
-     * @param mail
+     * @param email
      * @param description
      */
-    public User(String name, String surname, String phone, String mail, String description) {
+    public User(String name, String surname, String phone, String email, String description) {
         this.name = name;
         this.surname = surname;
         this.phone = phone;
-        this.mail = mail;
+        this.email = email;
         this.description = description;
     }
 
@@ -45,13 +50,13 @@ public class User {
      *
      * @param name
      * @param surname
-     * @param mail
+     * @param email
      * @param password
      */
-    public User(String name, String surname, String mail, String password) {
+    public User(String name, String surname, String email, String password) {
         this.name = name;
         this.surname = surname;
-        this.mail = mail;
+        this.email = email;
         this.password = password;
     }
 
@@ -62,16 +67,16 @@ public class User {
      * @param name        The name of the User
      * @param surname     The surname of the User
      * @param phone       The phone of the User
-     * @param mail        The mail of the User
+     * @param email        The email of the User
      * @param password    The password of the User
      * @param description The description about the User
      */
-    public User(int id, String name, String surname, String phone, String mail, String password, String description) {
+    public User(int id, String name, String surname, String phone, String email, String password, String description) {
         this.id = id;
         this.name = name;
         this.surname = surname;
         this.phone = phone;
-        this.mail = mail;
+        this.email = email;
         this.password = password;
         this.description = description;
     }
@@ -149,20 +154,20 @@ public class User {
     }
 
     /**
-     * Returns the mail of the User
+     * Returns the email of the User
      *
-     * @return The mail of the User
+     * @return The email of the User
      */
-    public String getMail() {
-        return mail;
+    public String getemail() {
+        return email;
     }
     /**
-     * Sets the mail of the User
+     * Sets the email of the User
      *
-     * @param mail The new mail of the User
+     * @param email The new email of the User
      */
-    public void setMail(String mail) {
-        this.mail = mail;
+    public void setemail(String email) {
+        this.email = email;
     }
     /**
      * Returns the password of the User
@@ -224,5 +229,21 @@ public class User {
      */
     public void setLongitude(Double longitude) {
         this.longitude = longitude;
+    }
+
+    public String getJob() {
+        return job;
+    }
+
+    public void setJob(String job) {
+        this.job = job;
+    }
+
+    public String getSector() {
+        return sector;
+    }
+
+    public void setSector(String sector) {
+        this.sector = sector;
     }
 }

@@ -53,7 +53,7 @@ public class Register extends AppCompatActivity {
         final String email = txtMail.getText().toString();
         final String password = txtPassword.getText().toString();
 
-        // Comprobamos que no estén vacíos
+        // Comprobamos que los campos no estén vacíos
         if(TextUtils.isEmpty(email)){
             Toast.makeText(this,"Introduce un valor en email",Toast.LENGTH_LONG).show();
             return;
@@ -96,10 +96,11 @@ public class Register extends AppCompatActivity {
                                             userMap.put("surname",surname);
                                             userMap.put("phone",phone);
                                             userMap.put("email",email);
-                                            userMap.put("skills","");
                                             userMap.put("latitude","");
                                             userMap.put("longitude","");
                                             userMap.put("description","");
+                                            userMap.put("job","");
+                                            userMap.put("sector","");
                                             // Mandamos el userMap a la base de datos al nodo usuarios, al nodo userid
                                             // Dejamos constancia de los campos vacíos
                                             FirebaseDatabase.getInstance().
@@ -116,7 +117,6 @@ public class Register extends AppCompatActivity {
                             Toast.makeText(Register.this,
                                     "Ha ocurrido un error en el registro",
                                     Toast.LENGTH_LONG).show();
-
                         }
                     }
                 });
