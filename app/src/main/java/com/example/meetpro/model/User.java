@@ -24,6 +24,7 @@ public class User {
     // Sector of stored about the User
     private String sector;
 
+
     /**
      * Constructor of the User
      */

@@ -29,6 +29,7 @@ public class Edit extends Template {
     private EditText txtSurname;
     private EditText txtPhone;
     private EditText txtMail;
+    private Spinner sectorSpinner;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,6 +45,7 @@ public class Edit extends Template {
         txtSurname = findViewById(R.id.lastName);
         txtPhone = findViewById(R.id.phone);
         txtMail = findViewById(R.id.email);
+        sectorSpinner = findViewById(R.id.sectorSpinner);
 
         getUserInfo();
 
@@ -91,7 +93,7 @@ public class Edit extends Template {
         userMap.put("longitude","");
         userMap.put("description","");
         userMap.put("job","");
-        userMap.put("sector","");
+        userMap.put("sector",sectorSpinner.getSelectedItem().toString());
 
 
         FirebaseDatabase.getInstance().

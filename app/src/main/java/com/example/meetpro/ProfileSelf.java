@@ -20,6 +20,8 @@ public class ProfileSelf extends Template {
     private TextView txtPhone;
     private TextView txtMail;
     private TextView txtDesc;
+    private TextView txtSector;
+    private TextView txtProfesion;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,6 +30,7 @@ public class ProfileSelf extends Template {
         txtName =  findViewById(R.id.name);
         txtPhone = findViewById(R.id.phone);
         txtMail = findViewById(R.id.email);
+        txtSector = findViewById(R.id.sector);
 
         getUserInfo();
     }
@@ -45,10 +48,14 @@ public class ProfileSelf extends Template {
                                 String phone = snap.child("phone").getValue().toString();
                                 String description = snap.child("description").getValue().toString();
                                 String email = snap.child("email").getValue().toString();
+                                String sector = snap.child("sector").getValue().toString();
 
                                 txtName.setText(name + " " + surname);
                                 txtPhone.setText(phone);
                                 txtMail.setText(email);
+                                txtSector.setText(sector);
+
+
                             }
                         }
                     }

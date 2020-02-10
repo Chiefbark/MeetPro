@@ -19,6 +19,7 @@ public class Main extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
+        FirebaseAuth.getInstance().signOut();
         if(FirebaseAuth.getInstance().getCurrentUser() != null){
             startActivity(new Intent(this,NearYou.class));
         }

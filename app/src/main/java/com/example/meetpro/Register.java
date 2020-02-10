@@ -32,6 +32,7 @@ public class Register extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
+        // Le atribuimos los componentes de la vista a las variables
         txtName =  findViewById(R.id.nombre);
         txtSurname = findViewById(R.id.apellido);
         txtPhone = findViewById(R.id.phone);
@@ -108,7 +109,7 @@ public class Register extends AppCompatActivity {
                                                     child("users").
                                                     child(mUser.getUid()).
                                                     setValue(userMap);
-
+                                            // Cargamos un intent y lanzamos la nueva activity
                                             Intent answer = new Intent(Register.this, Edit.class);
                                             startActivity(answer);
                                         }
