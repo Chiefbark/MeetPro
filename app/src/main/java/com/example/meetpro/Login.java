@@ -27,7 +27,7 @@ public class Login extends AppCompatActivity {
         txtPassword = findViewById(R.id.password);
     }
 
-    public void Login(View v) {
+    public void loginSession(View v) {
         final String email = txtMail.getText().toString();
         final String password = txtPassword.getText().toString();
 

@@ -39,10 +39,11 @@ public class NearYou extends Template {
                 // Cogemos las referencias del layout que le hemos puesto para los items en objetos
                 // del tipo TextView
                 TextView userName = (TextView)view.findViewById(R.id.name);
+                TextView userSector = (TextView)view.findViewById(R.id.sector);
 
                 // Asignamos su valor mediante setText
                 userName.setText(user.getName()+" "+user.getSurname());
-
+                userSector.setText(user.getSector());
 
             }
         };

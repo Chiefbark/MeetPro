@@ -135,7 +135,7 @@
                     android:onClick="loginSession"
                     android:paddingLeft="20dp"
                     android:paddingRight="20dp"
-                    android:text="@string/crear_cuenta"
+                    android:text="@string/iniciar_ses"
                     android:textColor="@color/colorPrimary"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
