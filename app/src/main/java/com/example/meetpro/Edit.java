@@ -1,18 +1,27 @@
 package com.example.meetpro;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.location.Address;
+import android.location.Geocoder;
+import android.location.Location;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import com.example.meetpro.model.User;
+import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -21,6 +30,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -32,6 +43,9 @@ public class Edit extends Template {
     private EditText txtDesc;
     private Spinner sectorSpinner;
     private Spinner profesionSpinner;
+    private EditText txtLocation;
+    private ImageButton imgButGeo;
+    private FusedLocationProviderClient fusedLocationClient;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,6 +69,38 @@ public class Edit extends Template {
         txtMail = findViewById(R.id.email);
         txtDesc = findViewById(R.id.description);
 
+        txtLocation = (EditText) findViewById(R.id.address);
+        imgButGeo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                fusedLocationClient.getLastLocation()
+                        .addOnSuccessListener(Edit.this, new OnSuccessListener<Location>() {
+                            @Override
+                            public void onSuccess(Location location) {
+                                // Got last known location. In some rare situations this can be null.
+                                if ((ContextCompat.checkSelfPermission(Edit.this, Manifest.permission.ACCESS_FINE_LOCATION)
+                                        == PackageManager.PERMISSION_GRANTED)&& (ContextCompat.checkSelfPermission(Edit.this, Manifest.permission.ACCESS_COARSE_LOCATION)
+                                        == PackageManager.PERMISSION_GRANTED)) {
+                                    if (location != null) {
+                                        ArrayList<Address> addresses = new ArrayList<Address>();
+                                        Geocoder geocoder1 = new Geocoder(Edit.this);
+                                        try {
+                                            addresses = (ArrayList<Address>) geocoder1.getFromLocation(location.getLatitude(), location.getLongitude(),1);
+                                            if (addresses != null && addresses.size() > 0) {
+                                                Address address = addresses.get(0);
+                                                // sending back first address line and locality
+                                                txtLocation.setText(address.getAddressLine(0) + ", " + address.getLocality());
+                                            }} catch (IOException e) {
+                                            e.printStackTrace();
+                                        }
+                                    }
+                                }
+
+
+                            }
+                        });
+            }
+        });
         getUserInfo();
 
     }
