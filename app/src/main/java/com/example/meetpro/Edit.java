@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -43,11 +44,6 @@ public class Edit extends Template {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         sectorSpinner.setAdapter(adapter);
 
-        profesionSpinner = (Spinner) findViewById(R.id.profesionSpinner);
-        adapter = ArrayAdapter.createFromResource(this,
-                R.array.profesionArray, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        profesionSpinner.setAdapter(adapter);
 
         txtName =  findViewById(R.id.name);
         txtSurname = findViewById(R.id.lastName);
@@ -55,25 +51,35 @@ public class Edit extends Template {
         txtMail = findViewById(R.id.email);
         txtDesc = findViewById(R.id.description);
 
+        sectorSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                Spinner profesiones = (Spinner) findViewById(R.id.profesionSpinner);
+                if (position==0){
+                    ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(Edit.this,
+                            R.array.profesionArray00, android.R.layout.simple_spinner_item);
+                    adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                    profesiones.setAdapter(adapter);
+                }else{
+                    ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(Edit.this,
+                            R.array.profesionArray01, android.R.layout.simple_spinner_item);
+                    adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                    profesiones.setAdapter(adapter);
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
         getUserInfo();
 
     }
 
     public void setProfesion(View v){
-        Spinner spinner = (Spinner)v;
 
-        Spinner profesiones = (Spinner) findViewById(R.id.profesionSpinner);
-        if (spinner.getSelectedItemPosition()==0){
-            ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
-                    R.array.profesionArray00, android.R.layout.simple_spinner_item);
-            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-            profesiones.setAdapter(adapter);
-        }else{
-            ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
-                    R.array.profesionArray01, android.R.layout.simple_spinner_item);
-            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-            profesiones.setAdapter(adapter);
-        }
     }
 
     private void getUserInfo() {
