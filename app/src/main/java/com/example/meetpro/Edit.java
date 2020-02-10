@@ -55,17 +55,17 @@ public class Edit extends Template {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-                Spinner profesiones = (Spinner) findViewById(R.id.profesionSpinner);
+                profesionSpinner = (Spinner) findViewById(R.id.profesionSpinner);
                 if (position==0){
                     ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(Edit.this,
                             R.array.profesionArray00, android.R.layout.simple_spinner_item);
                     adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                    profesiones.setAdapter(adapter);
+                    profesionSpinner.setAdapter(adapter);
                 }else{
                     ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(Edit.this,
                             R.array.profesionArray01, android.R.layout.simple_spinner_item);
                     adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                    profesiones.setAdapter(adapter);
+                    profesionSpinner.setAdapter(adapter);
                 }
             }
 

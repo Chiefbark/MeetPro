@@ -2,9 +2,11 @@ package com.example.meetpro;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Debug;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
@@ -31,7 +33,7 @@ public class ProfileSelf extends Template {
         txtPhone = findViewById(R.id.phone);
         txtMail = findViewById(R.id.email);
         txtSector = findViewById(R.id.sector);
-
+        txtDesc = findViewById(R.id.description);
         getUserInfo();
     }
 
@@ -54,7 +56,8 @@ public class ProfileSelf extends Template {
                                 txtPhone.setText(phone);
                                 txtMail.setText(email);
                                 txtSector.setText(sector);
-                                txtDesc.setText(""+description);
+                                Toast.makeText(ProfileSelf.this, description,Toast.LENGTH_LONG).show();
+                                txtDesc.setText(description);
 
                             }
                         }
