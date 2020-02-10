@@ -51,6 +51,23 @@ public class Edit extends Template {
 
     }
 
+    public void setProfesion(View v){
+        Spinner spinner = (Spinner)v;
+
+        Spinner profesiones = (Spinner) findViewById(R.id.profesionSpinner);
+        if (spinner.getSelectedItemPosition()==0){
+            ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                    R.array.profesionArray00, android.R.layout.simple_spinner_item);
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            profesiones.setAdapter(adapter);
+        }else{
+            ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                    R.array.profesionArray01, android.R.layout.simple_spinner_item);
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            profesiones.setAdapter(adapter);
+        }
+    }
+
     private void getUserInfo() {
         final FirebaseUser mUser = FirebaseAuth.getInstance().getCurrentUser();
         FirebaseDatabase.getInstance().getReference().child("users").addListenerForSingleValueEvent
@@ -110,6 +127,8 @@ public class Edit extends Template {
             }
         });
     }
+
+
 
 
 

@@ -135,11 +135,11 @@
                     android:onClick="loginSession"
                     android:paddingLeft="20dp"
                     android:paddingRight="20dp"
-                    android:text="@string/crear_cuenta"
+                    android:text="Iniciar Sesion"
                     android:textColor="@color/colorPrimary"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintHorizontal_bias="0.52"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/body" />
 
