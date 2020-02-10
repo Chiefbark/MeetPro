@@ -29,23 +29,31 @@ public class Edit extends Template {
     private EditText txtSurname;
     private EditText txtPhone;
     private EditText txtMail;
+    private EditText txtDesc;
     private Spinner sectorSpinner;
+    private Spinner profesionSpinner;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         addContent(R.layout.activity_edit);
 
-        Spinner spinner = (Spinner) findViewById(R.id.sectorSpinner);
+        sectorSpinner = (Spinner) findViewById(R.id.sectorSpinner);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.sectoresArray, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(adapter);
+        sectorSpinner.setAdapter(adapter);
+
+        profesionSpinner = (Spinner) findViewById(R.id.profesionSpinner);
+        adapter = ArrayAdapter.createFromResource(this,
+                R.array.profesionArray, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        profesionSpinner.setAdapter(adapter);
 
         txtName =  findViewById(R.id.name);
         txtSurname = findViewById(R.id.lastName);
         txtPhone = findViewById(R.id.phone);
         txtMail = findViewById(R.id.email);
-        sectorSpinner = findViewById(R.id.sectorSpinner);
+        txtDesc = findViewById(R.id.description);
 
         getUserInfo();
 
@@ -86,6 +94,7 @@ public class Edit extends Template {
                                 txtSurname.setText(surname);
                                 txtPhone.setText(phone);
                                 txtMail.setText(email);
+                                txtDesc.setText("" + description);
                             }
                         }
                     }
@@ -108,8 +117,8 @@ public class Edit extends Template {
         userMap.put("email",txtMail.getText().toString());
         userMap.put("latitude","");
         userMap.put("longitude","");
-        userMap.put("description","");
-        userMap.put("job","");
+        userMap.put("description",txtDesc.getText().toString());
+        userMap.put("job",profesionSpinner.getSelectedItem().toString());
         userMap.put("sector",sectorSpinner.getSelectedItem().toString());
 
 

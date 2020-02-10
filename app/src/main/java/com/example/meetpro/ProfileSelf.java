@@ -54,7 +54,7 @@ public class ProfileSelf extends Template {
                                 txtPhone.setText(phone);
                                 txtMail.setText(email);
                                 txtSector.setText(sector);
-
+                                txtDesc.setText(description);
 
                             }
                         }
