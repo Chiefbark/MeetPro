@@ -15,15 +15,15 @@
 
         <ImageView
             android:id="@+id/imageView5"
-            android:layout_width="130dp"
-            android:layout_height="91dp"
+            android:layout_width="150dp"
+            android:layout_height="105dp"
             android:layout_marginEnd="8dp"
             android:layout_weight="1"
             app:srcCompat="@drawable/photo_sample" />
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
             android:orientation="vertical">
 
@@ -65,7 +65,7 @@
                 <Button
                     android:id="@+id/see_profile"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="30dp"
                     android:layout_marginRight="5dp"
                     android:layout_weight="1"
                     android:background="@drawable/button"
@@ -74,12 +74,12 @@
                     android:minHeight="15dp"
                     android:text="Ver Perfil"
                     android:textColor="#FFFFFF"
-                    android:textSize="6dp" />
+                    android:textSize="10dp" />
 
                 <Button
                     android:id="@+id/unmatch"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="30dp"
                     android:layout_marginRight="5dp"
                     android:layout_weight="1"
                     android:background="@drawable/button"
@@ -88,7 +88,7 @@
                     android:minHeight="15dp"
                     android:text="UnMatch"
                     android:textColor="#FFFFFF"
-                    android:textSize="6dp" />
+                    android:textSize="10dp" />
 
             </LinearLayout>
 

@@ -11,6 +11,8 @@ import com.example.meetpro.model.User;
 import com.firebase.client.Firebase;
 import com.firebase.ui.FirebaseListAdapter;
 
+import org.w3c.dom.Text;
+
 public class NearYou extends Template {
     private ListView searchview;
     @Override
@@ -40,10 +42,12 @@ public class NearYou extends Template {
                 // del tipo TextView
                 TextView userName = (TextView)view.findViewById(R.id.name);
                 TextView userSector = (TextView)view.findViewById(R.id.sector);
+                TextView userProfesion = (TextView)view.findViewById(R.id.profesion);
 
                 // Asignamos su valor mediante setText
                 userName.setText(user.getName()+" "+user.getSurname());
                 userSector.setText(user.getSector());
+                userProfesion.setText(user.getJob());
 
             }
         };
