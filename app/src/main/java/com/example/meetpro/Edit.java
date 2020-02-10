@@ -46,6 +46,7 @@ public class Edit extends Template {
     private Spinner sectorSpinner;
     private Spinner profesionSpinner;
     private EditText txtLocation;
+    private Double userLatitude,userLongitude;
     private ImageButton imgButGeo;
     private FusedLocationProviderClient fusedLocationClient;
     @Override
@@ -81,8 +82,11 @@ public class Edit extends Template {
                                         Geocoder geocoder1 = new Geocoder(Edit.this);
                                         try {
                                             addresses = (ArrayList<Address>) geocoder1.getFromLocation(location.getLatitude(), location.getLongitude(),1);
+
                                             if (addresses != null && addresses.size() > 0) {
                                                 Address address = addresses.get(0);
+                                                userLatitude = address.getLatitude();
+                                                userLongitude = address.getLongitude();
                                                 // sending back first address line and locality
                                                 txtLocation.setText(address.getAddressLine(0) + ", " + address.getLocality());
                                             }} catch (IOException e) {
@@ -164,8 +168,8 @@ public class Edit extends Template {
         userMap.put("surname",txtSurname.getText().toString());
         userMap.put("phone",txtPhone.getText().toString());
         userMap.put("email",txtMail.getText().toString());
-        userMap.put("latitude","");
-        userMap.put("longitude","");
+        userMap.put("latitude",userLatitude.toString());
+        userMap.put("longitude",userLongitude.toString());
         userMap.put("description",txtDesc.getText().toString());
         userMap.put("job",profesionSpinner.getSelectedItem().toString());
         userMap.put("sector",sectorSpinner.getSelectedItem().toString());
