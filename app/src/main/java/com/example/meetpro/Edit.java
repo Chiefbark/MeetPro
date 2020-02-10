@@ -21,6 +21,7 @@ import androidx.core.content.ContextCompat;
 
 import com.example.meetpro.model.User;
 import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -57,6 +58,7 @@ public class Edit extends Template {
                 R.array.sectoresArray, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         sectorSpinner.setAdapter(adapter);
+        fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
 
 
         txtName =  findViewById(R.id.name);
@@ -65,19 +67,15 @@ public class Edit extends Template {
         txtMail = findViewById(R.id.email);
         txtDesc = findViewById(R.id.description);
 
-<<<<<<< HEAD
         txtLocation = (EditText) findViewById(R.id.address);
+        imgButGeo= (ImageButton) findViewById(R.id.imageButton);
         imgButGeo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                fusedLocationClient.getLastLocation()
-                        .addOnSuccessListener(Edit.this, new OnSuccessListener<Location>() {
+                fusedLocationClient.getLastLocation().addOnSuccessListener(Edit.this, new OnSuccessListener<Location>() {
                             @Override
                             public void onSuccess(Location location) {
                                 // Got last known location. In some rare situations this can be null.
-                                if ((ContextCompat.checkSelfPermission(Edit.this, Manifest.permission.ACCESS_FINE_LOCATION)
-                                        == PackageManager.PERMISSION_GRANTED)&& (ContextCompat.checkSelfPermission(Edit.this, Manifest.permission.ACCESS_COARSE_LOCATION)
-                                        == PackageManager.PERMISSION_GRANTED)) {
                                     if (location != null) {
                                         ArrayList<Address> addresses = new ArrayList<Address>();
                                         Geocoder geocoder1 = new Geocoder(Edit.this);
@@ -91,12 +89,11 @@ public class Edit extends Template {
                                             e.printStackTrace();
                                         }
                                     }
-                                }
-
 
                             }
                         });
-=======
+            }
+        });
         sectorSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -118,7 +115,6 @@ public class Edit extends Template {
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
 
->>>>>>> 2c9ee32364e10373af3ec577d1a3e9ff76b0f646
             }
         });
         getUserInfo();
