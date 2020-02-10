@@ -7,13 +7,17 @@
 
     <string-array name="sectoresArray">
         <item>Sector Informatico</item>
-        <item>Sector Informatico</item>
-        <item>Sector Informatico</item>
+        <item>Sector Medico</item>
     </string-array>
 
-    <string-array name="profesionArray">
+    <string-array name="profesionArray00">
         <item>Programador Front</item>
         <item>Programador Back</item>
         <item>Programador FullStack</item>
+    </string-array>
+    <string-array name="profesionArray01">
+        <item>Cirujano Plastico</item>
+        <item>Pediatra</item>
+        <item>Cardiologo</item>
     </string-array>
 </resources>

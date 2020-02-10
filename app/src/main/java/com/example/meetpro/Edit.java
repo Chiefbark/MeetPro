@@ -9,6 +9,7 @@ import android.location.Location;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -57,11 +58,6 @@ public class Edit extends Template {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         sectorSpinner.setAdapter(adapter);
 
-        profesionSpinner = (Spinner) findViewById(R.id.profesionSpinner);
-        adapter = ArrayAdapter.createFromResource(this,
-                R.array.profesionArray, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        profesionSpinner.setAdapter(adapter);
 
         txtName =  findViewById(R.id.name);
         txtSurname = findViewById(R.id.lastName);
@@ -69,6 +65,7 @@ public class Edit extends Template {
         txtMail = findViewById(R.id.email);
         txtDesc = findViewById(R.id.description);
 
+<<<<<<< HEAD
         txtLocation = (EditText) findViewById(R.id.address);
         imgButGeo.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -99,9 +96,36 @@ public class Edit extends Template {
 
                             }
                         });
+=======
+        sectorSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                profesionSpinner = (Spinner) findViewById(R.id.profesionSpinner);
+                if (position==0){
+                    ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(Edit.this,
+                            R.array.profesionArray00, android.R.layout.simple_spinner_item);
+                    adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                    profesionSpinner.setAdapter(adapter);
+                }else{
+                    ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(Edit.this,
+                            R.array.profesionArray01, android.R.layout.simple_spinner_item);
+                    adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                    profesionSpinner.setAdapter(adapter);
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+>>>>>>> 2c9ee32364e10373af3ec577d1a3e9ff76b0f646
             }
         });
         getUserInfo();
+
+    }
+
+    public void setProfesion(View v){
 
     }
 
@@ -165,6 +189,8 @@ public class Edit extends Template {
             }
         });
     }
+
+
 
 
 
