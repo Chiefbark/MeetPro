@@ -23,7 +23,7 @@ public class ProfileSelf extends Template {
     private TextView txtMail;
     private TextView txtDesc;
     private TextView txtSector;
-    private TextView txtProfesion;
+    private TextView txtJob;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,6 +34,7 @@ public class ProfileSelf extends Template {
         txtMail = findViewById(R.id.email);
         txtSector = findViewById(R.id.sector);
         txtDesc = findViewById(R.id.description);
+        txtJob = findViewById(R.id.proffesion);
         getUserInfo();
     }
 
@@ -51,13 +52,14 @@ public class ProfileSelf extends Template {
                                 String description = snap.child("description").getValue().toString();
                                 String email = snap.child("email").getValue().toString();
                                 String sector = snap.child("sector").getValue().toString();
+                                String job = snap.child("job").getValue().toString();
 
                                 txtName.setText(name + " " + surname);
                                 txtPhone.setText(phone);
                                 txtMail.setText(email);
                                 txtSector.setText(sector);
-                                Toast.makeText(ProfileSelf.this, description,Toast.LENGTH_LONG).show();
                                 txtDesc.setText(description);
+                                txtJob.setText(job);
 
                             }
                         }

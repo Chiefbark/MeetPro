@@ -2,7 +2,7 @@ package com.example.meetpro.model;
 
 public class User {
     // The id of the User
-    private int id;
+    private String id;
     // The name of the User
     private String name;
     // The surname of the User
@@ -16,9 +16,9 @@ public class User {
     // The description about the User
     private String description;
     // The latitude stored about the User
-    private Double latitude;
+    private String latitude;
     // The longitude stored about the User
-    private Double longitude;
+    private String longitude;
     // Job stores about the User
     private String job;
     // Sector of stored about the User
@@ -61,43 +61,16 @@ public class User {
         this.password = password;
     }
 
-    /**
-     * Constructor of the User
-     *
-     * @param id          The id of the User
-     * @param name        The name of the User
-     * @param surname     The surname of the User
-     * @param phone       The phone of the User
-     * @param email        The email of the User
-     * @param password    The password of the User
-     * @param description The description about the User
-     */
-    public User(int id, String name, String surname, String phone, String email, String password, String description) {
-        this.id = id;
-        this.name = name;
-        this.surname = surname;
-        this.phone = phone;
-        this.email = email;
-        this.password = password;
-        this.description = description;
-    }
-
-    /**
-     * Returns the id of the User
-     *
-     * @return The id of the User
-     */
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    /**
-     * Sets the id of the User
-     *
-     * @param id The new id of the User
-     */
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
+    }
+
+    public String getLatitude() {
+        return latitude;
     }
 
     /**
@@ -203,32 +176,17 @@ public class User {
     public void setDescription(String description) {
         this.description = description;
     }
-    /**
-     * Reuturns the latitude of the User
-     * @return
-     */
-    public Double getLatitude() {
-        return latitude;
-    }
-    /**
-     * Sets the latitude of the User
-     * @param latitude
-     */
-    public void setLatitude(Double latitude) {
+
+
+    public void setLatitude(String latitude) {
         this.latitude = latitude;
     }
-    /**
-     * Reuturns the longitude of the User
-     * @return
-     */
-    public Double getLongitude() {
+
+    public String getLongitude() {
         return longitude;
     }
-    /**
-     * Sets the longitude of the User
-     * @param longitude
-     */
-    public void setLongitude(Double longitude) {
+
+    public void setLongitude(String longitude) {
         this.longitude = longitude;
     }
 

@@ -74,28 +74,28 @@ public class Edit extends Template {
             @Override
             public void onClick(View v) {
                 fusedLocationClient.getLastLocation().addOnSuccessListener(Edit.this, new OnSuccessListener<Location>() {
-                            @Override
-                            public void onSuccess(Location location) {
-                                // Got last known location. In some rare situations this can be null.
-                                    if (location != null) {
-                                        ArrayList<Address> addresses = new ArrayList<Address>();
-                                        Geocoder geocoder1 = new Geocoder(Edit.this);
-                                        try {
-                                            addresses = (ArrayList<Address>) geocoder1.getFromLocation(location.getLatitude(), location.getLongitude(),1);
+                    @Override
+                    public void onSuccess(Location location) {
+                        // Got last known location. In some rare situations this can be null.
+                        if (location != null) {
+                            ArrayList<Address> addresses = new ArrayList<Address>();
+                            Geocoder geocoder1 = new Geocoder(Edit.this);
+                            try {
+                                addresses = (ArrayList<Address>) geocoder1.getFromLocation(location.getLatitude(), location.getLongitude(),1);
 
-                                            if (addresses != null && addresses.size() > 0) {
-                                                Address address = addresses.get(0);
-                                                userLatitude = address.getLatitude();
-                                                userLongitude = address.getLongitude();
-                                                // sending back first address line and locality
-                                                txtLocation.setText(address.getAddressLine(0) + ", " + address.getLocality());
-                                            }} catch (IOException e) {
-                                            e.printStackTrace();
-                                        }
-                                    }
-
+                                if (addresses != null && addresses.size() > 0) {
+                                    Address address = addresses.get(0);
+                                    userLatitude = address.getLatitude();
+                                    userLongitude = address.getLongitude();
+                                    // sending back first address line and locality
+                                    txtLocation.setText(address.getAddressLine(0) + ", " + address.getLocality());
+                                }} catch (IOException e) {
+                                e.printStackTrace();
                             }
-                        });
+                        }
+
+                    }
+                });
             }
         });
         sectorSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -125,6 +125,30 @@ public class Edit extends Template {
 
     }
 
+    private void setAddress(final double latitude, final double longitude){
+        fusedLocationClient.getLastLocation().addOnSuccessListener(Edit.this, new OnSuccessListener<Location>() {
+            @Override
+            public void onSuccess(Location location) {
+                // Got last known location. In some rare situations this can be null.
+                if (location != null) {
+                    ArrayList<Address> addresses = new ArrayList<Address>();
+                    Geocoder geocoder1 = new Geocoder(Edit.this);
+                    try {
+                        addresses = (ArrayList<Address>) geocoder1.getFromLocation(latitude,longitude,1);
+
+                        if (addresses != null && addresses.size() > 0) {
+                            Address address = addresses.get(0);
+                            // sending back first address line and locality
+                            txtLocation.setText(address.getAddressLine(0) + ", " + address.getLocality());
+                        }} catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+
+            }
+        });
+    }
+
     public void setProfesion(View v){
 
     }
@@ -142,7 +166,10 @@ public class Edit extends Template {
                                 String phone = snap.child("phone").getValue().toString();
                                 String description = snap.child("description").getValue().toString();
                                 String email = snap.child("email").getValue().toString();
+                                Double latitude = Double.parseDouble(snap.child("latitude").getValue().toString());
+                                Double longitude = Double.parseDouble(snap.child("longitude").getValue().toString());
 
+                                setAddress(latitude,longitude);
                                 txtName.setText(name);
                                 txtSurname.setText(surname);
                                 txtPhone.setText(phone);
@@ -164,6 +191,7 @@ public class Edit extends Template {
 
         // Llenamos el hashmap del usuario
         Map<String,String> userMap = new HashMap<>();
+        userMap.put("id",FirebaseAuth.getInstance().getCurrentUser().getUid());
         userMap.put("name",txtName.getText().toString());
         userMap.put("surname",txtSurname.getText().toString());
         userMap.put("phone",txtPhone.getText().toString());
