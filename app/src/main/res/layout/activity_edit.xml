@@ -238,106 +238,31 @@
                         android:padding="20dp"
                         android:textColorHint="@android:color/darker_gray"
                         android:textSize="14sp"
-                        app:layout_constraintBottom_toTopOf="@id/skills"
+                        app:layout_constraintBottom_toTopOf="@id/description"
                         app:layout_constraintLeft_toLeftOf="parent"
                         app:layout_constraintRight_toRightOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/profesionSpinner" />
 
-                    <LinearLayout
-                        android:id="@+id/skills"
-                        android:layout_width="330dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="20dp"
-                        android:gravity="center"
-                        android:orientation="horizontal"
-                        app:layout_constraintBottom_toTopOf="@id/addSkill"
-                        app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintRight_toRightOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/address">
-
-                        <TextView
-                            android:id="@+id/skill_1"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_marginRight="10dp"
-                            android:background="@drawable/button"
-                            android:backgroundTint="@color/colorPrimary"
-                            android:fontFamily="@font/montserrat"
-                            android:paddingLeft="13dp"
-                            android:paddingTop="3dp"
-                            android:paddingRight="13dp"
-                            android:paddingBottom="3dp"
-                            android:text="skill"
-                            android:textColor="@android:color/white" />
-
-                        <TextView
-                            android:id="@+id/skill_2"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_marginRight="10dp"
-                            android:background="@drawable/button"
-                            android:backgroundTint="@color/colorPrimary"
-                            android:fontFamily="@font/montserrat"
-                            android:paddingLeft="13dp"
-                            android:paddingTop="3dp"
-                            android:paddingRight="13dp"
-                            android:paddingBottom="3dp"
-                            android:text="skill"
-                            android:textColor="@android:color/white" />
-
-                        <TextView
-                            android:id="@+id/skill_3"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_marginRight="10dp"
-                            android:background="@drawable/button"
-                            android:backgroundTint="@color/colorPrimary"
-                            android:fontFamily="@font/montserrat"
-                            android:paddingLeft="13dp"
-                            android:paddingTop="3dp"
-                            android:paddingRight="13dp"
-                            android:paddingBottom="3dp"
-                            android:text="skill"
-                            android:textColor="@android:color/white" />
-
-                        <TextView
-                            android:id="@+id/skill_4"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:background="@drawable/button"
-                            android:backgroundTint="@color/colorPrimary"
-                            android:fontFamily="@font/montserrat"
-                            android:paddingLeft="13dp"
-                            android:paddingTop="3dp"
-                            android:paddingRight="13dp"
-                            android:paddingBottom="3dp"
-                            android:text="skill"
-                            android:textColor="@android:color/white" />
-
-                    </LinearLayout>
 
                     <EditText
-                        android:id="@+id/addSkill"
+                        android:id="@+id/description"
                         android:layout_width="330dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="160dp"
                         android:layout_marginBottom="20dp"
                         android:backgroundTint="@color/colorPrimary"
                         android:ems="10"
-                        android:hint="Añade un Skill..."
+                        android:gravity="top"
+                        android:hint="Brief Description..."
                         android:includeFontPadding="false"
                         android:inputType="textPersonName"
                         android:padding="20dp"
                         android:textColorHint="@android:color/darker_gray"
                         android:textSize="14sp"
-                        app:layout_constraintBottom_toBottomOf="parent
-            "
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintHorizontal_bias="0.493"
                         app:layout_constraintLeft_toLeftOf="parent"
                         app:layout_constraintRight_toRightOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/skills" />
+                        app:layout_constraintTop_toBottomOf="@id/address" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
