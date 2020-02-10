@@ -9,7 +9,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp">
 
         <ImageView
             android:id="@+id/imageView5"
@@ -115,10 +117,10 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:background="@drawable/button"
-                    android:backgroundTint="@color/colorPrimary"
+                    android:backgroundTint="#838383"
                     android:fontFamily="@font/montserrat"
                     android:minHeight="15dp"
-                    android:text="skill"
+                    android:text="..."
                     android:textColor="#FFFFFF"
                     android:textSize="6dp" />
 

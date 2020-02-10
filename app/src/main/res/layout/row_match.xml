@@ -9,7 +9,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp">
 
         <ImageView
             android:id="@+id/imageView5"
@@ -24,14 +26,6 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/distance"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/montserrat"
-                android:text="Estatus del match"
-                android:textSize="8dp" />
 
 
             <TextView
@@ -59,7 +53,7 @@
                 android:fontFamily="@font/montserrat"
                 android:text="Programador Front"
                 android:textColor="@color/colorPrimary"
-                android:textSize="16dp" />
+                android:textSize="20dp" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -96,18 +90,6 @@
                     android:textColor="#FFFFFF"
                     android:textSize="6dp" />
 
-                <Button
-                    android:id="@+id/match"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="@drawable/button"
-                    android:backgroundTint="@color/colorGreen"
-                    android:fontFamily="@font/montserrat"
-                    android:minHeight="15dp"
-                    android:text="match"
-                    android:textColor="#FFFFFF"
-                    android:textSize="6dp" />
             </LinearLayout>
 
 
