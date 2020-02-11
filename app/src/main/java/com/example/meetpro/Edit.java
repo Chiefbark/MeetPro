@@ -1,31 +1,45 @@
 package com.example.meetpro;
 
+import android.app.ProgressDialog;
+import android.content.ContentResolver;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
+import android.webkit.MimeTypeMap;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -33,6 +47,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Edit extends Template {
+    private ImageView profilePic;
     private EditText txtName;
     private EditText txtSurname;
     private EditText txtPhone;
@@ -45,11 +60,23 @@ public class Edit extends Template {
     private ImageButton imgButGeo;
     private FusedLocationProviderClient fusedLocationClient;
 
+
+
+    //---ATRIBUTOS PARA LA CARGA DE IMAGENES---//
+    private ImageView imageView;
+    int PICK_IMAGE_REQUEST=111;
+    Uri filePath;
+    FirebaseStorage storage= FirebaseStorage.getInstance();
+    StorageReference storageRef = storage.getReferenceFromUrl("gs://crudandroid-77e06.appspot.com");
+    private static final int GALLERY_INTENT=1;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         addContent(R.layout.activity_edit);
 
+        profilePic = findViewById(R.id.photo);
         sectorSpinner = (Spinner) findViewById(R.id.sectorSpinner);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.sectoresArray, android.R.layout.simple_spinner_item);
@@ -65,6 +92,13 @@ public class Edit extends Template {
         txtDesc = findViewById(R.id.description);
 
         txtLocation = (EditText) findViewById(R.id.address);
+        FloatingActionButton picButton = findViewById(R.id.editPhoto);
+        picButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                CargaImagenes();
+            }
+        });
         imgButGeo = (ImageButton) findViewById(R.id.imageButton);
         imgButGeo.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -229,8 +263,7 @@ public class Edit extends Template {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if (task.isSuccessful()) {
-                    Intent answer = new Intent(Edit.this, ProfileSelf.class);
-                    startActivity(answer);
+                    subirImagen();
                 }
             }
         });
@@ -279,6 +312,83 @@ public class Edit extends Template {
             }
         });
     }
+    //setea el imagView
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
+            filePath = data.getData();
+            // Log.d("entra",filePath.toString());
+            try {
+                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), filePath);
+                profilePic.setImageBitmap(bitmap);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
 
+    //subir imagenes a firebse
+    public void subirImagen(){
+
+        if(filePath!=null){
+            StorageReference chilRef=storageRef.child(FirebaseAuth.getInstance().getCurrentUser().getUid()+".jpg");
+            //actualizando la imagen
+
+            UploadTask uploadTask=chilRef.putFile(filePath);
+            uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                @Override
+                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                    Intent answer = new Intent(Edit.this, ProfileSelf.class);
+                    startActivity(answer);
+                    Toast.makeText(Edit.this,"subida exitosa",Toast.LENGTH_LONG).show();
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    Toast.makeText(Edit.this,"problemas al subir"+e,Toast.LENGTH_LONG).show();
+                }
+            });
+        }else{
+            Toast.makeText(Edit.this,"Seleccionar Imagen",Toast.LENGTH_LONG).show();
+        }
+        Log.d("ruta de mi imagen ",getFileExtension(filePath).toString());
+    }
+
+    //carga imagenes de la galeria
+    public void CargaImagenes(){
+        Intent gallery = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI);
+        startActivityForResult(gallery, PICK_IMAGE_REQUEST);
+    }
+    //obtener la ruta de la imagen
+    private String getFileExtension(Uri uri) {
+        ContentResolver cR = getContentResolver();
+        MimeTypeMap mime = MimeTypeMap.getSingleton();
+        return mime.getExtensionFromMimeType(cR.getType(uri));
+    }
+
+    private void DownloadImage(){
+        StorageReference storageReference = storage.getReferenceFromUrl("gs://coffeetalks-e4e57.appspot.com");
+        StorageReference photoReference= storageReference.child(
+                        FirebaseAuth.
+                        getInstance().
+                        getCurrentUser().
+                        getUid()+".jpg");
+
+        final long ONE_MEGABYTE = 1024 * 1024 * 20;
+        photoReference.getBytes(ONE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
+            @Override
+            public void onSuccess(byte[] bytes) {
+                Bitmap bmp = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+                profilePic.setImageBitmap(bmp);
+
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception exception) {
+                Toast.makeText(getApplicationContext(), exception.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        });
+    }
 
 }

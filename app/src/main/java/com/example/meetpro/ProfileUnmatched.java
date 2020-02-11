@@ -21,7 +21,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.HashMap;
 
-public class ProfileUnmatched extends Template implements View.OnClickListener{
+public class ProfileUnmatched extends Template implements View.OnClickListener {
     // Private values of the class
     private TextView txtName;
     private TextView txtDesc;
@@ -67,9 +67,9 @@ public class ProfileUnmatched extends Template implements View.OnClickListener{
                         String job = dataSnapshot.child("job").getValue().toString();
 
                         txtName.setText(name + " " + surname);
-                        txtSector.setText(""+sector);
+                        txtSector.setText("" + sector);
                         txtDesc.setText("" + description);
-                        txtJob.setText(""+job);
+                        txtJob.setText("" + job);
 
                     }
 
@@ -82,11 +82,12 @@ public class ProfileUnmatched extends Template implements View.OnClickListener{
 
     /**
      * Onclick
+     *
      * @param v view
      */
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.match:
                 isPending();
                 break;
@@ -98,38 +99,37 @@ public class ProfileUnmatched extends Template implements View.OnClickListener{
      */
     private void likeProfile() {
         final FirebaseUser mUser = FirebaseAuth.getInstance().getCurrentUser();
-
-            FirebaseDatabase.
-                    getInstance().
-                    getReference().
-                    child("pending").
-                    child(uID).addListenerForSingleValueEvent(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                    HashMap<String, Boolean> matchMap = new HashMap<>();
-                    for (DataSnapshot data : dataSnapshot.getChildren()) {
-                        matchMap.put(data.getKey().toString(), true);
-                    }
-                    matchMap.put(mUser.getUid(), true);
-                    addPending(matchMap);
-
+        FirebaseDatabase.
+                getInstance().
+                getReference().
+                child("pending").
+                child(uID).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                HashMap<String, Boolean> matchMap = new HashMap<>();
+                for (DataSnapshot data : dataSnapshot.getChildren()) {
+                    matchMap.put(data.getKey().toString(), true);
                 }
+                matchMap.put(mUser.getUid(), true);
+                addPending(matchMap);
+            }
 
-                @Override
-                public void onCancelled(@NonNull DatabaseError databaseError) {
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
 
-                }
-            });
+            }
+        });
 
 
     }
 
     /**
      * Adds a match into the node matches
-     * @param uID - UserId
+     *
+     * @param uID      - UserId
      * @param matchMap - Other userID
      */
-    private void addMatch(final String uID, HashMap<String,Boolean>matchMap) {
+    private void addMatch(final String uID, HashMap<String, Boolean> matchMap) {
         final FirebaseUser mUser = FirebaseAuth.getInstance().getCurrentUser();
         FirebaseDatabase.
                 getInstance().
@@ -139,11 +139,11 @@ public class ProfileUnmatched extends Template implements View.OnClickListener{
                 setValue(matchMap).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
-                if(task.isSuccessful()){
+                if (task.isSuccessful()) {
                     Toast.makeText(ProfileUnmatched.this,
                             "ITS A MATCH",
                             Toast.LENGTH_LONG).show();
-                    if(!mUser.getUid().equals(uID)) {
+                    if (!mUser.getUid().equals(uID)) {
                         Intent intent = new Intent(ProfileUnmatched.this, ProfileMatched.class);
                         intent.putExtra("uID", uID);
                         startActivity(intent);
@@ -167,15 +167,15 @@ public class ProfileUnmatched extends Template implements View.OnClickListener{
                 child(mUser.getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                HashMap<String,Boolean> matchMap = new HashMap<>();
-                for(DataSnapshot data:dataSnapshot.getChildren()){
-                    if(data.getKey().equals(uID)){
-                        matchProfile(uID,mUser.getUid());
-                        matchProfile(mUser.getUid(),uID);
+                HashMap<String, Boolean> matchMap = new HashMap<>();
+                for (DataSnapshot data : dataSnapshot.getChildren()) {
+                    if (data.getKey().equals(uID)) {
+                        matchProfile(uID, mUser.getUid());
+                        matchProfile(mUser.getUid(), uID);
                         checkPending = true;
                     }
                 }
-                if(!checkPending) {
+                if (!checkPending) {
                     likeProfile();
                 }
             }
@@ -189,7 +189,8 @@ public class ProfileUnmatched extends Template implements View.OnClickListener{
 
     /**
      * Gathers all the matches in one hashmap and adds the new match
-     * @param uID - UserID
+     *
+     * @param uID      - UserID
      * @param otherUID - Second userID
      */
     private void matchProfile(final String uID, final String otherUID) {
@@ -205,7 +206,7 @@ public class ProfileUnmatched extends Template implements View.OnClickListener{
                     matchMap.put(data.getKey().toString(), true);
                 }
                 matchMap.put(otherUID, true);
-                addMatch(uID,matchMap);
+                addMatch(uID, matchMap);
             }
 
             @Override
@@ -214,13 +215,13 @@ public class ProfileUnmatched extends Template implements View.OnClickListener{
             }
 
 
-
         });
 
     }
 
     /**
      * Adds a new pending match to the user's node
+     *
      * @param matchMap - Map of the user's pending matches
      */
     private void addPending(HashMap<String, Boolean> matchMap) {
@@ -232,9 +233,9 @@ public class ProfileUnmatched extends Template implements View.OnClickListener{
                 setValue(matchMap).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
-                if(task.isSuccessful()){
+                if (task.isSuccessful()) {
                     Toast.makeText(ProfileUnmatched.this,
-                            "Like realiazdo con éxito",
+                            "Like realizado con éxito",
                             Toast.LENGTH_LONG).show();
                 }
             }

@@ -23,7 +23,8 @@ public class User {
     private String job;
     // Sector of stored about the User
     private String sector;
-
+    // Image url
+    private String profilepic;
 
     /**
      * Constructor of the User
@@ -59,6 +60,14 @@ public class User {
         this.surname = surname;
         this.email = email;
         this.password = password;
+    }
+
+    public String getProfilepic() {
+        return profilepic;
+    }
+
+    public void setProfilepic(String profilepic) {
+        this.profilepic = profilepic;
     }
 
     public String getId() {

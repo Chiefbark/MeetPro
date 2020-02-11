@@ -106,6 +106,7 @@ public class Register extends AppCompatActivity {
                                             userMap.put("description","");
                                             userMap.put("job","");
                                             userMap.put("sector","");
+                                            userMap.put("profilepic","");
                                             // Mandamos el userMap a la base de datos al nodo usuarios, al nodo userid
                                             // Dejamos constancia de los campos vacíos
                                             FirebaseDatabase.getInstance().

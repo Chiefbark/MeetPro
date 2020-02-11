@@ -30,6 +30,8 @@ dependencies {
     implementation 'com.google.android.gms:play-services-location:15.0.1'
     implementation 'com.firebase:firebase-client-android:2.5.1'
     implementation 'com.firebaseui:firebase-ui:0.3.1'
+    implementation 'com.google.firebase:firebase-storage:17.0.0'
+    implementation 'net.gotev:uploadservice:3.0'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
