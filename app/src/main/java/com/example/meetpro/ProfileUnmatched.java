@@ -1,13 +1,10 @@
 package com.example.meetpro;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.widget.TextView;
 
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
+import androidx.annotation.NonNull;
+
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
@@ -26,7 +23,7 @@ public class ProfileUnmatched extends Template {
         addContent(R.layout.activity_profile_unmatched);
 
         uID = getIntent().getStringExtra("uID");
-        txtName =  findViewById(R.id.name);
+        txtName = findViewById(R.id.name);
         txtSector = findViewById(R.id.sector);
         txtDesc = findViewById(R.id.description);
         txtJob = findViewById(R.id.proffesion);
@@ -34,27 +31,28 @@ public class ProfileUnmatched extends Template {
     }
 
     private void getUserInfo() {
-        final FirebaseUser mUser = FirebaseAuth.getInstance().getCurrentUser();
-        FirebaseDatabase.getInstance().getReference().child("users").addListenerForSingleValueEvent
-                (new ValueEventListener() {
+        FirebaseDatabase.
+                getInstance().
+                getReference().
+                child("users").
+                child(uID).
+                addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        for(DataSnapshot snap:dataSnapshot.getChildren()){
-                            if(uID.equals(snap.getKey().toString())){
-                                String name = snap.child("name").getValue().toString();
-                                String surname = snap.child("surname").getValue().toString();
-                                String description = snap.child("description").getValue().toString();
-                                String sector = snap.child("sector").getValue().toString();
-                                String job = snap.child("job").getValue().toString();
 
-                                txtName.setText(name + " " + surname);
-                                txtSector.setText(sector);
-                                txtDesc.setText(description);
-                                txtJob.setText(job);
+                        String name = dataSnapshot.child("name").getValue().toString();
+                        String surname = dataSnapshot.child("surname").getValue().toString();
+                        String description = dataSnapshot.child("description").getValue().toString();
+                        String sector = dataSnapshot.child("sector").getValue().toString();
+                        String job = dataSnapshot.child("job").getValue().toString();
 
-                            }
-                        }
+                        txtName.setText(name + " " + surname);
+                        txtSector.setText(sector);
+                        txtDesc.setText(description);
+                        txtJob.setText(job);
+
                     }
+
                     @Override
                     public void onCancelled(@NonNull DatabaseError databaseError) {
 

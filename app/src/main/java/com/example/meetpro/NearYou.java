@@ -1,21 +1,14 @@
 package com.example.meetpro;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.AppCompatButton;
-
 import android.content.Intent;
-import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.view.ViewParent;
-import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
 
 import com.example.meetpro.model.User;
 import com.firebase.client.Firebase;
@@ -27,20 +20,20 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import org.w3c.dom.Text;
-
-import java.io.IOException;
-import java.util.ArrayList;
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
 
 public class NearYou extends Template {
     private ListView searchview;
     private User myUser;
+    private static DecimalFormat df2 = new DecimalFormat(".##");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         addContent(R.layout.activity_near_you);
         searchview = findViewById(R.id.searchList);
+        df2.setRoundingMode(RoundingMode.UP);
         fillMyUser();
     }
 
@@ -63,8 +56,8 @@ public class NearYou extends Template {
                 TextView userSector = (TextView) view.findViewById(R.id.sector);
                 TextView userProfesion = (TextView) view.findViewById(R.id.profesion);
                 TextView userDistance = (TextView) view.findViewById(R.id.distance);
-                Double latitude =Double.parseDouble(user.getLatitude());
-                Double longitude= Double.parseDouble(user.getLongitude());
+                Double latitude = Double.parseDouble(user.getLatitude());
+                Double longitude = Double.parseDouble(user.getLongitude());
 
                 view.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -79,7 +72,7 @@ public class NearYou extends Template {
                 userName.setText(user.getName() + " " + user.getSurname());
                 userSector.setText(user.getSector());
                 userProfesion.setText(user.getJob());
-                userDistance.setText(getDistance(latitude,longitude)+" km");
+                userDistance.setText("a " + df2.format(getDistance(latitude, longitude)) + " km");
             }
         };
         // Asignamos el adapter a la lista
@@ -105,18 +98,17 @@ public class NearYou extends Template {
 
     private void fillMyUser() {
         final FirebaseUser mUser = FirebaseAuth.getInstance().getCurrentUser();
-        FirebaseDatabase.getInstance().getReference().child("users").addListenerForSingleValueEvent
-                (new ValueEventListener() {
+        FirebaseDatabase.getInstance().
+                getReference().
+                child("users").
+                child(mUser.getUid()).
+                addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        for (DataSnapshot snap : dataSnapshot.getChildren()) {
-                            if (mUser.getUid().equals(snap.getKey().toString())) {
-                                myUser = new User();
-                                myUser.setLatitude(snap.child("latitude").getValue().toString());
-                                myUser.setLongitude(snap.child("longitude").getValue().toString());
-                                listUsers();
-                            }
-                        }
+                        myUser = new User();
+                        myUser.setLatitude(dataSnapshot.child("latitude").getValue().toString());
+                        myUser.setLongitude(dataSnapshot.child("longitude").getValue().toString());
+                        listUsers();
                     }
 
                     @Override

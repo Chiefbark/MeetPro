@@ -24,12 +24,13 @@ public class ProfileSelf extends Template {
     private TextView txtDesc;
     private TextView txtSector;
     private TextView txtJob;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.addContent(R.layout.activity_profile_self);
 
-        txtName =  findViewById(R.id.name);
+        txtName = findViewById(R.id.name);
         txtPhone = findViewById(R.id.phone);
         txtMail = findViewById(R.id.email);
         txtSector = findViewById(R.id.sector);
@@ -40,30 +41,30 @@ public class ProfileSelf extends Template {
 
     private void getUserInfo() {
         final FirebaseUser mUser = FirebaseAuth.getInstance().getCurrentUser();
-        FirebaseDatabase.getInstance().getReference().child("users").addListenerForSingleValueEvent
-                (new ValueEventListener() {
+        FirebaseDatabase.
+                getInstance().
+                getReference().
+                child("users").
+                child(mUser.getUid()).
+                addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        for(DataSnapshot snap:dataSnapshot.getChildren()){
-                            if(mUser.getUid().equals(snap.getKey().toString())){
-                                String name = snap.child("name").getValue().toString();
-                                String surname = snap.child("surname").getValue().toString();
-                                String phone = snap.child("phone").getValue().toString();
-                                String description = snap.child("description").getValue().toString();
-                                String email = snap.child("email").getValue().toString();
-                                String sector = snap.child("sector").getValue().toString();
-                                String job = snap.child("job").getValue().toString();
+                        String name = dataSnapshot.child("name").getValue().toString();
+                        String surname = dataSnapshot.child("surname").getValue().toString();
+                        String phone = dataSnapshot.child("phone").getValue().toString();
+                        String description = dataSnapshot.child("description").getValue().toString();
+                        String email = dataSnapshot.child("email").getValue().toString();
+                        String sector = dataSnapshot.child("sector").getValue().toString();
+                        String job = dataSnapshot.child("job").getValue().toString();
 
-                                txtName.setText(name + " " + surname);
-                                txtPhone.setText(phone);
-                                txtMail.setText(email);
-                                txtSector.setText(sector);
-                                txtDesc.setText(description);
-                                txtJob.setText(job);
-
-                            }
-                        }
+                        txtName.setText(name + " " + surname);
+                        txtPhone.setText(phone);
+                        txtMail.setText(email);
+                        txtSector.setText(sector);
+                        txtDesc.setText(description);
+                        txtJob.setText(job);
                     }
+
                     @Override
                     public void onCancelled(@NonNull DatabaseError databaseError) {
 
@@ -72,8 +73,9 @@ public class ProfileSelf extends Template {
     }
 
 
-    public void onClickEdit(View v){
+    public void onClickEdit(View v) {
         Intent answer = new Intent(ProfileSelf.this, Edit.class);
+        answer.putExtra("hasConfirmation",true);
         startActivity(answer);
     }
 
