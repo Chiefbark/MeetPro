@@ -97,48 +97,6 @@ public class Matches extends Template {
     }
 
 
-    /*
-        private void listUsers() {
-            // Le ponemos de contexto a Firebase la actividad
-            Firebase.setAndroidContext(this);
-            // Creamos un objeto Firebase al que le pasamos la URL de la base de datos
-            Firebase mDatabase = new Firebase("https://crudandroid-77e06.firebaseio.com/");
-            // Inicializamos la clase anónima FireBaseListAdapter pasando como parámetros la actividad, la clase
-            // del modelo, el layout que tendran los items de la lista y por último la referencia de la
-            // base de datos
-            FirebaseListAdapter myAdapter = new FirebaseListAdapter<User>(this, User.class, R.layout.row_match, mDatabase.child("users")) {
-
-                @Override
-                protected void populateView(View view, final User user, int i) {
-                    if(userKey.contains(user.getId())) {
-                        // Cogemos las referencias del layout que le hemos puesto para los items en objetos
-                        // del tipo TextView
-                        TextView userName = (TextView) view.findViewById(R.id.name);
-                        TextView userSector = (TextView) view.findViewById(R.id.sector);
-                        TextView userProfesion = (TextView) view.findViewById(R.id.profesion);
-
-                        view.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                Intent intent = new Intent(Matches.this, ProfileMatched.class);
-                                intent.putExtra("uID", user.getId());
-                                startActivity(intent);
-                            }
-                        });
-
-                        // Asignamos su valor mediante setText
-                        userName.setText(user.getName() + " " + user.getSurname());
-                        userSector.setText(" " + user.getSector());
-                        userProfesion.setText(user.getJob());
-                    }else{
-                        view.setVisibility(View.GONE);
-                    }
-                }
-            };
-            // Asignamos el adapter a la lista
-            matchList.setAdapter(myAdapter);
-        }
-    */
     private class matchAdapter extends ArrayAdapter<User> {
         private ArrayList<User> users;
         public matchAdapter(@NonNull Context context, int resource, ArrayList<User> users) {

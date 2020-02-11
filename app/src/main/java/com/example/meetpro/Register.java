@@ -97,8 +97,8 @@ public class Register extends AppCompatActivity {
                                             userMap.put("surname",surname);
                                             userMap.put("phone",phone);
                                             userMap.put("email",email);
-                                            userMap.put("latitude","");
-                                            userMap.put("longitude","");
+                                            userMap.put("latitude","0.00");
+                                            userMap.put("longitude","0.00");
                                             userMap.put("description","");
                                             userMap.put("job","");
                                             userMap.put("sector","");

@@ -5,6 +5,7 @@ import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -225,7 +226,40 @@ public class Edit extends Template {
 
 
     public void onConfirm(View v) {
-        setUserInfo();
+        if(userLatitude == 0.00 || userLongitude == 0.00){
+            setLocationSetInfo();
+        }else {
+            setUserInfo();
+        }
+    }
+
+    private void setLocationSetInfo() {
+        fusedLocationClient.getLastLocation().addOnSuccessListener(Edit.this, new OnSuccessListener<Location>() {
+            @Override
+            public void onSuccess(Location location) {
+                // Got last known location. In some rare situations this can be null.
+                if (location != null) {
+                    ArrayList<Address> addresses = new ArrayList<Address>();
+                    Geocoder geocoder1 = new Geocoder(Edit.this);
+                    try {
+                        addresses = (ArrayList<Address>) geocoder1.getFromLocation(location.getLatitude(), location.getLongitude(), 1);
+
+                        if (addresses != null && addresses.size() > 0) {
+                            Address address = addresses.get(0);
+                            userLatitude = address.getLatitude();
+                            userLongitude = address.getLongitude();
+                            // sending back first address line and locality
+                            txtLocation.setText(address.getAddressLine(0) + ", " + address.getLocality());
+                        }
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }finally {
+                        setUserInfo();
+                    }
+                }
+
+            }
+        });
     }
 
 

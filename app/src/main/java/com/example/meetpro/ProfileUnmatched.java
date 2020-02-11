@@ -64,9 +64,9 @@ public class ProfileUnmatched extends Template implements View.OnClickListener{
                         String job = dataSnapshot.child("job").getValue().toString();
 
                         txtName.setText(name + " " + surname);
-                        txtSector.setText(sector);
-                        txtDesc.setText(description);
-                        txtJob.setText(job);
+                        txtSector.setText(""+sector);
+                        txtDesc.setText("" + description);
+                        txtJob.setText(""+job);
 
                     }
 
@@ -115,6 +115,7 @@ public class ProfileUnmatched extends Template implements View.OnClickListener{
     }
 
     private void addMatch(final String uID, HashMap<String,Boolean>matchMap) {
+        final FirebaseUser mUser = FirebaseAuth.getInstance().getCurrentUser();
         FirebaseDatabase.
                 getInstance().
                 getReference().
@@ -127,9 +128,11 @@ public class ProfileUnmatched extends Template implements View.OnClickListener{
                     Toast.makeText(ProfileUnmatched.this,
                             "ITS A MATCH",
                             Toast.LENGTH_LONG).show();
-                    Intent intent = new Intent(ProfileUnmatched.this,ProfileMatched.class);
-                    intent.putExtra("uID",uID);
-                    startActivity(intent);
+                    if(!mUser.getUid().equals(uID)) {
+                        Intent intent = new Intent(ProfileUnmatched.this, ProfileMatched.class);
+                        intent.putExtra("uID", uID);
+                        startActivity(intent);
+                    }
                 }
             }
         });

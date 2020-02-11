@@ -55,11 +55,11 @@ public class ProfileMatched extends Template {
                         String job = dataSnapshot.child("job").getValue().toString();
 
                         txtName.setText(name + " " + surname);
-                        txtPhone.setText(phone);
-                        txtMail.setText(email);
-                        txtSector.setText(sector);
-                        txtDesc.setText(description);
-                        txtJob.setText(job);
+                        txtPhone.setText(""+phone);
+                        txtMail.setText(""+email);
+                        txtSector.setText(""+sector);
+                        txtDesc.setText(""+description);
+                        txtJob.setText(""+job);
                     }
 
                     @Override
