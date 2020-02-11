@@ -46,6 +46,10 @@ public class Register extends AppCompatActivity {
         realizarRegistro();
     }
 
+    /**
+     * Makes the register with Firebase authentication service, it also creates an empty node into
+     * the realtime database
+     */
     private void realizarRegistro() {
         // Recogemos todos los datos del formulario
         final String name = txtName.getText().toString();

@@ -43,6 +43,9 @@ public class Matches extends Template {
         fillList();
     }
 
+    /**
+     * Fills the ArrayList with the uids stored in the match node of the user
+     */
     private void fillList() {
         FirebaseUser mUser = FirebaseAuth.getInstance().getCurrentUser();
         FirebaseDatabase.
@@ -66,6 +69,9 @@ public class Matches extends Template {
                 });
     }
 
+    /**
+     * Fill the ArrayList of User according to the uids stored in uids ArrayList
+     */
     private void listUsers() {
         FirebaseDatabase.
                 getInstance().
@@ -96,7 +102,9 @@ public class Matches extends Template {
                 });
     }
 
-
+    /**
+     * Prrivate class, custom ArrayAdapter
+     */
     private class matchAdapter extends ArrayAdapter<User> {
         private ArrayList<User> users;
         public matchAdapter(@NonNull Context context, int resource, ArrayList<User> users) {

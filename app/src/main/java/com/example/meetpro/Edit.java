@@ -73,7 +73,9 @@ public class Edit extends Template {
 
             }
         });
+        // We change the value according to the selection
         sectorSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
@@ -100,6 +102,9 @@ public class Edit extends Template {
 
     }
 
+    /**
+     * Sets the current latitude and longitude
+     */
     private void setLocation() {
         fusedLocationClient.getLastLocation().addOnSuccessListener(Edit.this, new OnSuccessListener<Location>() {
             @Override
@@ -127,6 +132,11 @@ public class Edit extends Template {
         });
     }
 
+    /**
+     * Sets the address with the longitude and latitude
+     * @param latitude - longitude
+     * @param longitude -  latitude
+     */
     private void setAddress(final double latitude, final double longitude) {
         fusedLocationClient.getLastLocation().addOnSuccessListener(Edit.this, new OnSuccessListener<Location>() {
             @Override
@@ -152,10 +162,9 @@ public class Edit extends Template {
         });
     }
 
-    public void setProfesion(View v) {
-
-    }
-
+    /**
+     * Gets the user information stored in the database
+     */
     private void getUserInfo() {
         final FirebaseUser mUser = FirebaseAuth.getInstance().getCurrentUser();
         FirebaseDatabase.
@@ -191,6 +200,9 @@ public class Edit extends Template {
                 });
     }
 
+    /**
+     * Sets the new information gathered from all the editText in the layout
+     */
     private void setUserInfo() {
         final FirebaseUser mUser = FirebaseAuth.getInstance().getCurrentUser();
 
@@ -224,7 +236,10 @@ public class Edit extends Template {
         });
     }
 
-
+    /**
+     * OnClick method for confirm button
+     * @param v - View
+     */
     public void onConfirm(View v) {
         if(userLatitude == 0.00 || userLongitude == 0.00){
             setLocationSetInfo();
@@ -233,6 +248,9 @@ public class Edit extends Template {
         }
     }
 
+    /**
+     * Sets the location if it is empty and sets the user information into the database after
+     */
     private void setLocationSetInfo() {
         fusedLocationClient.getLastLocation().addOnSuccessListener(Edit.this, new OnSuccessListener<Location>() {
             @Override

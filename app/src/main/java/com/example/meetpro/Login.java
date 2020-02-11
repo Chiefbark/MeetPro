@@ -27,6 +27,10 @@ public class Login extends AppCompatActivity {
         txtPassword = findViewById(R.id.password);
     }
 
+    /**
+     * Logs a user into the app using Firebase Authentication service
+     * @param v - View
+     */
     public void loginSession(View v) {
         final String email = txtMail.getText().toString();
         final String password = txtPassword.getText().toString();
@@ -41,7 +45,9 @@ public class Login extends AppCompatActivity {
             return;
         }
 
-        FirebaseAuth.getInstance().signInWithEmailAndPassword(email,password).
+        FirebaseAuth.
+                getInstance().
+                signInWithEmailAndPassword(email,password).
                 addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {

@@ -22,11 +22,11 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.HashMap;
 
 public class ProfileUnmatched extends Template implements View.OnClickListener{
+    // Private values of the class
     private TextView txtName;
     private TextView txtDesc;
     private TextView txtSector;
     private TextView txtJob;
-    private Button likeButton;
     private String uID;
     private boolean checkPending = false;
 
@@ -41,12 +41,15 @@ public class ProfileUnmatched extends Template implements View.OnClickListener{
         txtDesc = findViewById(R.id.description);
         txtJob = findViewById(R.id.proffesion);
 
-        likeButton = findViewById(R.id.match);
+        Button likeButton = findViewById(R.id.match);
         likeButton.setOnClickListener(this);
 
         getUserInfo();
     }
 
+    /**
+     * Gets the information about the user and sets the textviews in the layout
+     */
     private void getUserInfo() {
         FirebaseDatabase.
                 getInstance().
@@ -77,6 +80,10 @@ public class ProfileUnmatched extends Template implements View.OnClickListener{
                 });
     }
 
+    /**
+     * Onclick
+     * @param v view
+     */
     @Override
     public void onClick(View v) {
         switch (v.getId()){
@@ -86,6 +93,9 @@ public class ProfileUnmatched extends Template implements View.OnClickListener{
         }
     }
 
+    /**
+     * Likes a profile, which means it is added to the pending node
+     */
     private void likeProfile() {
         final FirebaseUser mUser = FirebaseAuth.getInstance().getCurrentUser();
 
@@ -114,6 +124,11 @@ public class ProfileUnmatched extends Template implements View.OnClickListener{
 
     }
 
+    /**
+     * Adds a match into the node matches
+     * @param uID - UserId
+     * @param matchMap - Other userID
+     */
     private void addMatch(final String uID, HashMap<String,Boolean>matchMap) {
         final FirebaseUser mUser = FirebaseAuth.getInstance().getCurrentUser();
         FirebaseDatabase.
@@ -138,6 +153,10 @@ public class ProfileUnmatched extends Template implements View.OnClickListener{
         });
     }
 
+    /**
+     * Checks if the user that have been liked is in the pending list
+     * if it is, it makes the match, otherwise it adds the user to the pending list
+     */
     private void isPending() {
         final FirebaseUser mUser = FirebaseAuth.getInstance().getCurrentUser();
 
@@ -168,6 +187,11 @@ public class ProfileUnmatched extends Template implements View.OnClickListener{
         });
     }
 
+    /**
+     * Gathers all the matches in one hashmap and adds the new match
+     * @param uID - UserID
+     * @param otherUID - Second userID
+     */
     private void matchProfile(final String uID, final String otherUID) {
         FirebaseDatabase.
                 getInstance().
@@ -195,6 +219,10 @@ public class ProfileUnmatched extends Template implements View.OnClickListener{
 
     }
 
+    /**
+     * Adds a new pending match to the user's node
+     * @param matchMap - Map of the user's pending matches
+     */
     private void addPending(HashMap<String, Boolean> matchMap) {
         FirebaseDatabase.
                 getInstance().

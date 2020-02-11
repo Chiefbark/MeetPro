@@ -37,6 +37,9 @@ public class ProfileMatched extends Template {
 
     }
 
+    /**
+     * Gets the information stored in the realtime database and sets the textview according to it
+     */
     private void getUserInfo() {
         FirebaseDatabase.
                 getInstance().

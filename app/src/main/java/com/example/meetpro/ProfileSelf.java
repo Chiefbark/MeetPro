@@ -39,6 +39,9 @@ public class ProfileSelf extends Template {
         getUserInfo();
     }
 
+    /**
+     * Gets the user information from the database
+     */
     private void getUserInfo() {
         final FirebaseUser mUser = FirebaseAuth.getInstance().getCurrentUser();
         FirebaseDatabase.
@@ -72,7 +75,10 @@ public class ProfileSelf extends Template {
                 });
     }
 
-
+    /**
+     * Starts edit activity onclick
+     * @param v - View
+     */
     public void onClickEdit(View v) {
         Intent answer = new Intent(ProfileSelf.this, Edit.class);
         answer.putExtra("hasConfirmation",true);

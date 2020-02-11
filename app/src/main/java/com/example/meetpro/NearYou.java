@@ -37,6 +37,9 @@ public class NearYou extends Template {
         fillMyUser();
     }
 
+    /**
+     * List of the user through FirebaseListAdapter
+     */
     private void listUsers() {
         // Le ponemos de contexto a Firebase la actividad
         Firebase.setAndroidContext(this);
@@ -46,7 +49,12 @@ public class NearYou extends Template {
         // del modelo, el layout que tendran los items de la lista y por último la referencia de la
         // base de datos
         FirebaseListAdapter myAdapter = new FirebaseListAdapter<User>(this, User.class, R.layout.row_search, mDatabase.child("users")) {
-
+            /**
+             * Fills the array adapter
+             * @param view - layout view
+             * @param user - model of the data gathered from firebase
+             * @param i - iterator
+             */
             @Override
             protected void populateView(View view, final User user, int i) {
 
@@ -79,6 +87,12 @@ public class NearYou extends Template {
         searchview.setAdapter(myAdapter);
     }
 
+    /**
+     * Gets the distance between the user's location and the location given
+     * @param latitude - latitude of the given location
+     * @param longitude - logintude of the given location
+     * @return distance in kilometers
+     */
     private double getDistance(double latitude, double longitude) {
         double disKm;
         Geocoder geocoder1 = new Geocoder(NearYou.this);
@@ -96,6 +110,9 @@ public class NearYou extends Template {
         return disKm;
     }
 
+    /**
+     * Gets the user longitude and latitude and stores it into variable
+     */
     private void fillMyUser() {
         final FirebaseUser mUser = FirebaseAuth.getInstance().getCurrentUser();
         FirebaseDatabase.getInstance().
