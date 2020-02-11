@@ -75,11 +75,11 @@
             android:id="@+id/description"
             android:layout_width="319dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="30dp"
             android:text="Breve descripcion del usuario, lo que el quiera informar, puede poner algun estudio aqui o en donde trabaja actualmente, mas que todo porque no se que tanto quiera la gente publicar su info"
             android:textColor="@color/colorPrimary"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
