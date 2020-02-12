@@ -6,24 +6,32 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.meetpro.model.User;
 import com.firebase.client.Firebase;
 import com.firebase.ui.FirebaseListAdapter;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -92,7 +100,7 @@ public class Matches extends Template {
                                 Log.d("user", usr.getName());
                             }
                         }
-                        matchList.setAdapter(new matchAdapter(Matches.this,R.layout.row_match,userList));
+                        matchList.setAdapter(new matchAdapter(Matches.this, R.layout.row_match, userList));
                     }
 
                     @Override
@@ -107,8 +115,9 @@ public class Matches extends Template {
      */
     private class matchAdapter extends ArrayAdapter<User> {
         private ArrayList<User> users;
+
         public matchAdapter(@NonNull Context context, int resource, ArrayList<User> users) {
-            super(context, resource,users);
+            super(context, resource, users);
             this.users = users;
         }
 
@@ -118,8 +127,8 @@ public class Matches extends Template {
             View view = convertview;
             final User user = users.get(position);
 
-            if(view == null){
-                view = LayoutInflater.from(Matches.this).inflate(R.layout.row_match,parent,false);
+            if (view == null) {
+                view = LayoutInflater.from(Matches.this).inflate(R.layout.row_match, parent, false);
             }
 
             // Cogemos las referencias del layout que le hemos puesto para los items en objetos
@@ -141,7 +150,30 @@ public class Matches extends Template {
             userName.setText(user.getName() + " " + user.getSurname());
             userSector.setText(" " + user.getSector());
             userProfesion.setText(user.getJob());
+
+            DownloadImage(user, (ImageView) view.findViewById(R.id.profilePic));
             return view;
+        }
+
+        private void DownloadImage(User user, final ImageView profilePic) {
+            FirebaseStorage storage = FirebaseStorage.getInstance();
+            StorageReference storageReference = storage.getReferenceFromUrl("gs://crudandroid-77e06.appspot.com");
+            StorageReference photoReference = storageReference.child(user.getId() + ".jpg");
+
+            final long ONE_MEGABYTE = 1024 * 1024 * 20;
+            photoReference.getBytes(ONE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
+                @Override
+                public void onSuccess(byte[] bytes) {
+                    Bitmap bmp = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+                    profilePic.setImageBitmap(bmp);
+
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception exception) {
+                    Toast.makeText(getApplicationContext(), exception.getMessage(), Toast.LENGTH_LONG).show();
+                }
+            });
         }
     }
 }

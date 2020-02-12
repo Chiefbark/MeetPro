@@ -3,17 +3,27 @@ package com.example.meetpro;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.meetpro.model.User;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 public class ProfileMatched extends Template {
+
     private TextView txtName;
     private TextView txtPhone;
     private TextView txtMail;
@@ -21,6 +31,7 @@ public class ProfileMatched extends Template {
     private TextView txtSector;
     private TextView txtJob;
     private String uID;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,11 +69,13 @@ public class ProfileMatched extends Template {
                         String job = dataSnapshot.child("job").getValue().toString();
 
                         txtName.setText(name + " " + surname);
-                        txtPhone.setText(""+phone);
-                        txtMail.setText(""+email);
-                        txtSector.setText(""+sector);
-                        txtDesc.setText(""+description);
-                        txtJob.setText(""+job);
+                        txtPhone.setText("" + phone);
+                        txtMail.setText("" + email);
+                        txtSector.setText("" + sector);
+                        txtDesc.setText("" + description);
+                        txtJob.setText("" + job);
+
+                        DownloadImage((ImageView) findViewById(R.id.profilePic));
                     }
 
                     @Override
@@ -70,6 +83,27 @@ public class ProfileMatched extends Template {
 
                     }
                 });
+    }
+
+    private void DownloadImage(final ImageView profilePic) {
+        FirebaseStorage storage = FirebaseStorage.getInstance();
+        StorageReference storageReference = storage.getReferenceFromUrl("gs://crudandroid-77e06.appspot.com");
+        StorageReference photoReference = storageReference.child(uID + ".jpg");
+
+        final long ONE_MEGABYTE = 1024 * 1024 * 20;
+        photoReference.getBytes(ONE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
+            @Override
+            public void onSuccess(byte[] bytes) {
+                Bitmap bmp = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+                profilePic.setImageBitmap(bmp);
+
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception exception) {
+                Toast.makeText(getApplicationContext(), exception.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        });
     }
 
 }

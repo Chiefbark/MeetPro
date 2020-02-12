@@ -1,16 +1,21 @@
 package com.example.meetpro;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -18,6 +23,8 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import java.util.HashMap;
 
@@ -71,6 +78,7 @@ public class ProfileUnmatched extends Template implements View.OnClickListener {
                         txtDesc.setText("" + description);
                         txtJob.setText("" + job);
 
+                        DownloadImage((ImageView) findViewById(R.id.profilePic));
                     }
 
                     @Override
@@ -238,6 +246,27 @@ public class ProfileUnmatched extends Template implements View.OnClickListener {
                             "Like realizado con éxito",
                             Toast.LENGTH_LONG).show();
                 }
+            }
+        });
+    }
+
+    private void DownloadImage(final ImageView profilePic) {
+        FirebaseStorage storage = FirebaseStorage.getInstance();
+        StorageReference storageReference = storage.getReferenceFromUrl("gs://crudandroid-77e06.appspot.com");
+        StorageReference photoReference = storageReference.child(uID + ".jpg");
+
+        final long ONE_MEGABYTE = 1024 * 1024 * 20;
+        photoReference.getBytes(ONE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
+            @Override
+            public void onSuccess(byte[] bytes) {
+                Bitmap bmp = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+                profilePic.setImageBitmap(bmp);
+
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception exception) {
+                Toast.makeText(getApplicationContext(), exception.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
     }

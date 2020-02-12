@@ -1,24 +1,32 @@
 package com.example.meetpro;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.location.Geocoder;
 import android.location.Location;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
 import com.example.meetpro.model.User;
 import com.firebase.client.Firebase;
 import com.firebase.ui.FirebaseListAdapter;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
@@ -81,6 +89,8 @@ public class NearYou extends Template {
                 userSector.setText(user.getSector());
                 userProfesion.setText(user.getJob());
                 userDistance.setText("a " + df2.format(getDistance(latitude, longitude)) + " km");
+
+                DownloadImage(user, (ImageView) view.findViewById(R.id.profilePic));
             }
         };
         // Asignamos el adapter a la lista
@@ -89,14 +99,13 @@ public class NearYou extends Template {
 
     /**
      * Gets the distance between the user's location and the location given
-     * @param latitude - latitude of the given location
+     *
+     * @param latitude  - latitude of the given location
      * @param longitude - logintude of the given location
      * @return distance in kilometers
      */
     private double getDistance(double latitude, double longitude) {
         double disKm;
-        Geocoder geocoder1 = new Geocoder(NearYou.this);
-        Geocoder geocoder2 = new Geocoder(NearYou.this);
 
         Location location1 = new Location("punto A");
         location1.setLatitude(Double.parseDouble(myUser.getLatitude()));
@@ -133,6 +142,27 @@ public class NearYou extends Template {
 
                     }
                 });
+    }
+
+    private void DownloadImage(User user, final ImageView profilePic) {
+        FirebaseStorage storage = FirebaseStorage.getInstance();
+        StorageReference storageReference = storage.getReferenceFromUrl("gs://crudandroid-77e06.appspot.com");
+        StorageReference photoReference = storageReference.child(user.getId() + ".jpg");
+
+        final long ONE_MEGABYTE = 1024 * 1024 * 20;
+        photoReference.getBytes(ONE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
+            @Override
+            public void onSuccess(byte[] bytes) {
+                Bitmap bmp = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+                profilePic.setImageBitmap(bmp);
+
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception exception) {
+                Toast.makeText(getApplicationContext(), exception.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        });
     }
 
 }

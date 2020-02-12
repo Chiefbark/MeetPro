@@ -4,9 +4,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import android.os.Debug;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -39,7 +37,7 @@ public class ProfileSelf extends Template {
         super.onCreate(savedInstanceState);
         this.addContent(R.layout.activity_profile_self);
 
-        profilePic = findViewById(R.id.photo);
+        profilePic = findViewById(R.id.profilePic);
         txtName = findViewById(R.id.name);
         txtPhone = findViewById(R.id.phone);
         txtMail = findViewById(R.id.email);
@@ -96,11 +94,12 @@ public class ProfileSelf extends Template {
         answer.putExtra("hasConfirmation", true);
         startActivity(answer);
     }
-    private void DownloadImage(){
+
+    private void DownloadImage() {
         StorageReference storageReference = FirebaseStorage.
                 getInstance()
                 .getReferenceFromUrl("gs://crudandroid-77e06.appspot.com");
-        StorageReference photoReference= storageReference.child(FirebaseAuth.getInstance().getCurrentUser().getUid()+".jpg");
+        StorageReference photoReference = storageReference.child(FirebaseAuth.getInstance().getCurrentUser().getUid() + ".jpg");
 
         final long ONE_MEGABYTE = 1024 * 1024 * 10;
         photoReference.getBytes(ONE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {

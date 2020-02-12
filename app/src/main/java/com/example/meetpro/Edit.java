@@ -1,6 +1,5 @@
 package com.example.meetpro;
 
-import android.app.ProgressDialog;
 import android.content.ContentResolver;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -76,7 +75,7 @@ public class Edit extends Template {
         super.onCreate(savedInstanceState);
         addContent(R.layout.activity_edit);
 
-        profilePic = findViewById(R.id.photo);
+        profilePic = findViewById(R.id.profilePic);
         sectorSpinner = (Spinner) findViewById(R.id.sectorSpinner);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.sectoresArray, android.R.layout.simple_spinner_item);
