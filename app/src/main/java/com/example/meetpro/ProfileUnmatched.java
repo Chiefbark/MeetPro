@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -116,7 +115,7 @@ public class ProfileUnmatched extends Template implements View.OnClickListener {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 HashMap<String, Boolean> matchMap = new HashMap<>();
                 for (DataSnapshot data : dataSnapshot.getChildren()) {
-                    matchMap.put(data.getKey().toString(), true);
+                    matchMap.put(data.getKey(), true);
                 }
                 matchMap.put(mUser.getUid(), true);
                 addPending(matchMap);
@@ -211,7 +210,7 @@ public class ProfileUnmatched extends Template implements View.OnClickListener {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 HashMap<String, Boolean> matchMap = new HashMap<>();
                 for (DataSnapshot data : dataSnapshot.getChildren()) {
-                    matchMap.put(data.getKey().toString(), true);
+                    matchMap.put(data.getKey(), true);
                 }
                 matchMap.put(otherUID, true);
                 addMatch(uID, matchMap);

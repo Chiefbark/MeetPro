@@ -1,14 +1,14 @@
 package com.example.meetpro;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -33,7 +33,7 @@ public class Register extends AppCompatActivity {
         setContentView(R.layout.activity_register);
 
         // Le atribuimos los componentes de la vista a las variables
-        txtName =  findViewById(R.id.nombre);
+        txtName = findViewById(R.id.nombre);
         txtSurname = findViewById(R.id.apellido);
         txtPhone = findViewById(R.id.phone);
         txtMail = findViewById(R.id.email);
@@ -42,7 +42,7 @@ public class Register extends AppCompatActivity {
 
     }
 
-    public void onClickRegister(View v){
+    public void onClickRegister(View v) {
         realizarRegistro();
     }
 
@@ -59,24 +59,24 @@ public class Register extends AppCompatActivity {
         final String password = txtPassword.getText().toString();
 
         // Comprobamos que los campos no estén vacíos
-        if(TextUtils.isEmpty(email)){
-            Toast.makeText(this,"Introduce un valor en email",Toast.LENGTH_LONG).show();
+        if (TextUtils.isEmpty(email)) {
+            Toast.makeText(this, "Introduce un valor en email", Toast.LENGTH_LONG).show();
             return;
         }
-        if(TextUtils.isEmpty(password)){
-            Toast.makeText(this,"Introduce un valor en contraseña",Toast.LENGTH_LONG).show();
+        if (TextUtils.isEmpty(password)) {
+            Toast.makeText(this, "Introduce un valor en contraseña", Toast.LENGTH_LONG).show();
             return;
         }
-        if(TextUtils.isEmpty(name)){
-            Toast.makeText(this,"Introduce un valor en nombre",Toast.LENGTH_LONG).show();
+        if (TextUtils.isEmpty(name)) {
+            Toast.makeText(this, "Introduce un valor en nombre", Toast.LENGTH_LONG).show();
             return;
         }
-        if(TextUtils.isEmpty(surname)){
-            Toast.makeText(this,"Introduce un valor en apellido",Toast.LENGTH_LONG).show();
+        if (TextUtils.isEmpty(surname)) {
+            Toast.makeText(this, "Introduce un valor en apellido", Toast.LENGTH_LONG).show();
             return;
         }
-        if(TextUtils.isEmpty(phone)){
-            Toast.makeText(this,"Introduce un valor en teléfono",Toast.LENGTH_LONG).show();
+        if (TextUtils.isEmpty(phone)) {
+            Toast.makeText(this, "Introduce un valor en teléfono", Toast.LENGTH_LONG).show();
             return;
         }
 
@@ -86,7 +86,7 @@ public class Register extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         // Si ha sido exitoso el registro
-                        if(task.isSuccessful()){
+                        if (task.isSuccessful()) {
                             // Logueamos al usuario, si se completa nueva entrada en la base de datos con sus datos
                             FirebaseAuth.getInstance().signInWithEmailAndPassword(email, password).
                                     addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -96,17 +96,17 @@ public class Register extends AppCompatActivity {
                                             FirebaseUser mUser = FirebaseAuth.getInstance().getCurrentUser();
 
                                             // Llenamos el hashmap del usuario
-                                            Map<String,String> userMap = new HashMap<>();
-                                            userMap.put("name",name);
-                                            userMap.put("surname",surname);
-                                            userMap.put("phone",phone);
-                                            userMap.put("email",email);
-                                            userMap.put("latitude","0.00");
-                                            userMap.put("longitude","0.00");
-                                            userMap.put("description","");
-                                            userMap.put("job","");
-                                            userMap.put("sector","");
-                                            userMap.put("profilepic","");
+                                            Map<String, String> userMap = new HashMap<>();
+                                            userMap.put("name", name);
+                                            userMap.put("surname", surname);
+                                            userMap.put("phone", phone);
+                                            userMap.put("email", email);
+                                            userMap.put("latitude", "0.00");
+                                            userMap.put("longitude", "0.00");
+                                            userMap.put("description", "");
+                                            userMap.put("job", "");
+                                            userMap.put("sector", "");
+                                            userMap.put("profilepic", "");
                                             // Mandamos el userMap a la base de datos al nodo usuarios, al nodo userid
                                             // Dejamos constancia de los campos vacíos
                                             FirebaseDatabase.getInstance().
@@ -119,7 +119,7 @@ public class Register extends AppCompatActivity {
                                             startActivity(answer);
                                         }
                                     });
-                        }else {
+                        } else {
                             Toast.makeText(Register.this,
                                     "Ha ocurrido un error en el registro",
                                     Toast.LENGTH_LONG).show();

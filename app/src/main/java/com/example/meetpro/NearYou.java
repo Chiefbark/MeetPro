@@ -3,7 +3,6 @@ package com.example.meetpro;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.location.Geocoder;
 import android.location.Location;
 import android.os.Bundle;
 import android.view.View;
@@ -68,10 +67,10 @@ public class NearYou extends Template {
 
                 // Cogemos las referencias del layout que le hemos puesto para los items en objetos
                 // del tipo TextView
-                TextView userName = (TextView) view.findViewById(R.id.name);
-                TextView userSector = (TextView) view.findViewById(R.id.sector);
-                TextView userProfesion = (TextView) view.findViewById(R.id.profesion);
-                TextView userDistance = (TextView) view.findViewById(R.id.distance);
+                TextView userName = view.findViewById(R.id.name);
+                TextView userSector = view.findViewById(R.id.sector);
+                TextView userProfesion = view.findViewById(R.id.profesion);
+                TextView userDistance = view.findViewById(R.id.distance);
                 Double latitude = Double.parseDouble(user.getLatitude());
                 Double longitude = Double.parseDouble(user.getLongitude());
 

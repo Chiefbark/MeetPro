@@ -1,9 +1,5 @@
 package com.example.meetpro;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -19,9 +15,10 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
 import com.example.meetpro.model.User;
-import com.firebase.client.Firebase;
-import com.firebase.ui.FirebaseListAdapter;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -34,7 +31,6 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class Matches extends Template {
     private ListView matchList;
@@ -133,9 +129,9 @@ public class Matches extends Template {
 
             // Cogemos las referencias del layout que le hemos puesto para los items en objetos
             // del tipo TextView
-            TextView userName = (TextView) view.findViewById(R.id.name);
-            TextView userSector = (TextView) view.findViewById(R.id.sector);
-            TextView userProfesion = (TextView) view.findViewById(R.id.profesion);
+            TextView userName = view.findViewById(R.id.name);
+            TextView userSector = view.findViewById(R.id.sector);
+            TextView userProfesion = view.findViewById(R.id.profesion);
 
             view.setOnClickListener(new View.OnClickListener() {
                 @Override

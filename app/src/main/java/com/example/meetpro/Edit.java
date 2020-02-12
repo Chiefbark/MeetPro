@@ -60,14 +60,13 @@ public class Edit extends Template {
     private FusedLocationProviderClient fusedLocationClient;
 
 
-
     //---ATRIBUTOS PARA LA CARGA DE IMAGENES---//
     private ImageView imageView;
-    int PICK_IMAGE_REQUEST=111;
+    int PICK_IMAGE_REQUEST = 111;
     Uri filePath;
-    FirebaseStorage storage= FirebaseStorage.getInstance();
+    FirebaseStorage storage = FirebaseStorage.getInstance();
     StorageReference storageRef = storage.getReferenceFromUrl("gs://crudandroid-77e06.appspot.com");
-    private static final int GALLERY_INTENT=1;
+    private static final int GALLERY_INTENT = 1;
 
 
     @Override
@@ -76,7 +75,7 @@ public class Edit extends Template {
         addContent(R.layout.activity_edit);
 
         profilePic = findViewById(R.id.profilePic);
-        sectorSpinner = (Spinner) findViewById(R.id.sectorSpinner);
+        sectorSpinner = findViewById(R.id.sectorSpinner);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.sectoresArray, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -90,7 +89,7 @@ public class Edit extends Template {
         txtMail = findViewById(R.id.email);
         txtDesc = findViewById(R.id.description);
 
-        txtLocation = (EditText) findViewById(R.id.address);
+        txtLocation = findViewById(R.id.address);
         FloatingActionButton picButton = findViewById(R.id.editPhoto);
         picButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -98,7 +97,7 @@ public class Edit extends Template {
                 CargaImagenes();
             }
         });
-        imgButGeo = (ImageButton) findViewById(R.id.imageButton);
+        imgButGeo = findViewById(R.id.imageButton);
         imgButGeo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -112,7 +111,7 @@ public class Edit extends Template {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-                profesionSpinner = (Spinner) findViewById(R.id.profesionSpinner);
+                profesionSpinner = findViewById(R.id.profesionSpinner);
                 if (position == 0) {
                     ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(Edit.this,
                             R.array.profesionArray00, android.R.layout.simple_spinner_item);
@@ -168,7 +167,8 @@ public class Edit extends Template {
 
     /**
      * Sets the address with the longitude and latitude
-     * @param latitude - longitude
+     *
+     * @param latitude  - longitude
      * @param longitude -  latitude
      */
     private void setAddress(final double latitude, final double longitude) {
@@ -263,9 +263,9 @@ public class Edit extends Template {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if (task.isSuccessful()) {
-                    if(filePath!=null) {
+                    if (filePath != null) {
                         subirImagen();
-                    }else{
+                    } else {
                         Intent answer = new Intent(Edit.this, ProfileSelf.class);
                         startActivity(answer);
                     }
@@ -276,12 +276,13 @@ public class Edit extends Template {
 
     /**
      * OnClick method for confirm button
+     *
      * @param v - View
      */
     public void onConfirm(View v) {
-        if(userLatitude == 0.00 || userLongitude == 0.00){
+        if (userLatitude == 0.00 || userLongitude == 0.00) {
             setLocationSetInfo();
-        }else {
+        } else {
             setUserInfo();
         }
     }
@@ -309,7 +310,7 @@ public class Edit extends Template {
                         }
                     } catch (IOException e) {
                         e.printStackTrace();
-                    }finally {
+                    } finally {
                         setUserInfo();
                     }
                 }
@@ -317,6 +318,7 @@ public class Edit extends Template {
             }
         });
     }
+
     //setea el imagView
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -334,37 +336,38 @@ public class Edit extends Template {
     }
 
     //subir imagenes a firebse
-    public void subirImagen(){
+    public void subirImagen() {
 
-        if(filePath!=null){
-            StorageReference chilRef=storageRef.child(FirebaseAuth.getInstance().getCurrentUser().getUid()+".jpg");
+        if (filePath != null) {
+            StorageReference chilRef = storageRef.child(FirebaseAuth.getInstance().getCurrentUser().getUid() + ".jpg");
             //actualizando la imagen
 
-            UploadTask uploadTask=chilRef.putFile(filePath);
+            UploadTask uploadTask = chilRef.putFile(filePath);
             uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                     Intent answer = new Intent(Edit.this, ProfileSelf.class);
                     startActivity(answer);
-                    Toast.makeText(Edit.this,"subida exitosa",Toast.LENGTH_LONG).show();
+                    Toast.makeText(Edit.this, "subida exitosa", Toast.LENGTH_LONG).show();
                 }
             }).addOnFailureListener(new OnFailureListener() {
                 @Override
                 public void onFailure(@NonNull Exception e) {
-                    Toast.makeText(Edit.this,"problemas al subir"+e,Toast.LENGTH_LONG).show();
+                    Toast.makeText(Edit.this, "problemas al subir" + e, Toast.LENGTH_LONG).show();
                 }
             });
-        }else{
-            Toast.makeText(Edit.this,"Seleccionar Imagen",Toast.LENGTH_LONG).show();
+        } else {
+            Toast.makeText(Edit.this, "Seleccionar Imagen", Toast.LENGTH_LONG).show();
         }
-        Log.d("ruta de mi imagen ",getFileExtension(filePath).toString());
+        Log.d("ruta de mi imagen ", getFileExtension(filePath));
     }
 
     //carga imagenes de la galeria
-    public void CargaImagenes(){
+    public void CargaImagenes() {
         Intent gallery = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI);
         startActivityForResult(gallery, PICK_IMAGE_REQUEST);
     }
+
     //obtener la ruta de la imagen
     private String getFileExtension(Uri uri) {
         ContentResolver cR = getContentResolver();
@@ -372,13 +375,13 @@ public class Edit extends Template {
         return mime.getExtensionFromMimeType(cR.getType(uri));
     }
 
-    private void DownloadImage(){
+    private void DownloadImage() {
         StorageReference storageReference = storage.getReferenceFromUrl("gs://crudandroid-77e06.appspot.com");
-        StorageReference photoReference= storageReference.child(
-                        FirebaseAuth.
+        StorageReference photoReference = storageReference.child(
+                FirebaseAuth.
                         getInstance().
                         getCurrentUser().
-                        getUid()+".jpg");
+                        getUid() + ".jpg");
 
         final long ONE_MEGABYTE = 1024 * 1024 * 20;
         photoReference.getBytes(ONE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {

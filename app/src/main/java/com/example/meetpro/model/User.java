@@ -33,7 +33,6 @@ public class User {
     }
 
     /**
-     *
      * @param name
      * @param surname
      * @param phone
@@ -49,7 +48,6 @@ public class User {
     }
 
     /**
-     *
      * @param name
      * @param surname
      * @param email
@@ -144,6 +142,7 @@ public class User {
     public String getemail() {
         return email;
     }
+
     /**
      * Sets the email of the User
      *
@@ -152,6 +151,7 @@ public class User {
     public void setemail(String email) {
         this.email = email;
     }
+
     /**
      * Returns the password of the User
      *
@@ -160,6 +160,7 @@ public class User {
     public String getPassword() {
         return password;
     }
+
     /**
      * Sets the password of the User
      *
@@ -168,6 +169,7 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
+
     /**
      * Returns the description of the User
      *
