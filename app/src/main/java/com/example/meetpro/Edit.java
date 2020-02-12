@@ -132,6 +132,7 @@ public class Edit extends Template {
 
             }
         });
+        DownloadImage();
         getUserInfo();
 
     }
@@ -263,7 +264,12 @@ public class Edit extends Template {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if (task.isSuccessful()) {
-                    subirImagen();
+                    if(filePath!=null) {
+                        subirImagen();
+                    }else{
+                        Intent answer = new Intent(Edit.this, ProfileSelf.class);
+                        startActivity(answer);
+                    }
                 }
             }
         });
@@ -368,7 +374,7 @@ public class Edit extends Template {
     }
 
     private void DownloadImage(){
-        StorageReference storageReference = storage.getReferenceFromUrl("gs://coffeetalks-e4e57.appspot.com");
+        StorageReference storageReference = storage.getReferenceFromUrl("gs://crudandroid-77e06.appspot.com");
         StorageReference photoReference= storageReference.child(
                         FirebaseAuth.
                         getInstance().
