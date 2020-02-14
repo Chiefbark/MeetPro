@@ -14,6 +14,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class Main extends AppCompatActivity {
     private int permisos;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,12 +27,17 @@ public class Main extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        if (ContextCompat.checkSelfPermission(Main.this, Manifest.permission.ACCESS_FINE_LOCATION)
-                != PackageManager.PERMISSION_GRANTED) {
+        // PERMISOS
+        if ((ContextCompat.checkSelfPermission(Main.this,
+                Manifest.permission.ACCESS_FINE_LOCATION)
+                != PackageManager.PERMISSION_GRANTED) ||
+                (ContextCompat.checkSelfPermission(Main.this,
+                        Manifest.permission.READ_EXTERNAL_STORAGE)
+                        != PackageManager.PERMISSION_GRANTED)) {
             ActivityCompat.requestPermissions(Main.this,
-                    new String[]{Manifest.permission.ACCESS_FINE_LOCATION,Manifest.permission.ACCESS_COARSE_LOCATION,Manifest.permission.READ_EXTERNAL_STORAGE},permisos);
+                    new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.READ_EXTERNAL_STORAGE}, permisos);
         }
-
+        // SESSION
         if (FirebaseAuth.getInstance().getCurrentUser() != null) {
             startActivity(new Intent(this, NearYou.class));
         }
