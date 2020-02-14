@@ -116,7 +116,15 @@ public class NearYou extends AppCompatActivity {
                 }
             }
         });
-
+        findViewById(R.id.logout).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FirebaseAuth.getInstance().signOut();
+                Intent n = new Intent(NearYou.this, Main.class);
+                startActivity(n);
+                finish();
+            }
+        });
         df2.setRoundingMode(RoundingMode.UP);
         setLocationSetInfo();
 

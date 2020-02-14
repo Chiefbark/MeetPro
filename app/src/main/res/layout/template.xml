@@ -66,13 +66,13 @@
             android:paddingTop="20dp"
             android:paddingBottom="20dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/settings"
+            app:layout_constraintEnd_toStartOf="@id/logout"
             app:layout_constraintStart_toEndOf="@id/search"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/icon_account" />
 
         <ImageButton
-            android:id="@+id/settings"
+            android:id="@+id/logout"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:background="@color/colorPrimary"

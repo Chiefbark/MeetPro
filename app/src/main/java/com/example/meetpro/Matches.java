@@ -90,6 +90,15 @@ public class Matches extends AppCompatActivity {
                 }
             }
         });
+        findViewById(R.id.logout).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               FirebaseAuth.getInstance().signOut();
+                Intent n = new Intent(Matches.this, Main.class);
+                startActivity(n);
+                finish();
+            }
+        });
 
         fillList();
     }

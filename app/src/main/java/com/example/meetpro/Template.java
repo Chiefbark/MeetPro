@@ -10,6 +10,8 @@ import android.widget.LinearLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 public class Template extends AppCompatActivity {
 
     @Override
@@ -59,7 +61,15 @@ public class Template extends AppCompatActivity {
                 }
             }
         });
-
+        findViewById(R.id.logout).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FirebaseAuth.getInstance().signOut();
+                Intent n = new Intent(Template.this, Main.class);
+                startActivity(n);
+                finish();
+            }
+        });
 
     }
 

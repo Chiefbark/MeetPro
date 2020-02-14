@@ -47,23 +47,23 @@
 
         <View
             android:id="@+id/dividerHeader"
-            android:layout_width="350dp"
+            android:layout_width="0dp"
             android:layout_height="1dp"
             android:background="@color/colorPrimary"
             android:backgroundTint="@color/colorPrimary"
             android:foregroundTint="@color/colorPrimary"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            tools:layout_editor_absoluteY="75dp" />
+            app:layout_constraintRight_toRightOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ListView
         android:id="@+id/searchList"
-        android:layout_width="426dp"
-        android:layout_height="586dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:divider="@color/colorPrimary"
         android:dividerHeight="1dp"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/header" />
@@ -113,13 +113,13 @@
             android:paddingTop="20dp"
             android:paddingBottom="20dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/settings"
+            app:layout_constraintEnd_toStartOf="@id/logout"
             app:layout_constraintStart_toEndOf="@id/search"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/icon_account" />
 
         <ImageButton
-            android:id="@+id/settings"
+            android:id="@+id/logout"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:background="@color/colorPrimary"
