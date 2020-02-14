@@ -1,6 +1,8 @@
 package com.example.meetpro;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -17,6 +19,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.meetpro.model.User;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -32,7 +35,7 @@ import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
 
-public class Matches extends Template {
+public class Matches extends AppCompatActivity {
     private ListView matchList;
     private ArrayList<String> userKey;
     private ArrayList<User> userList;
@@ -40,10 +43,54 @@ public class Matches extends Template {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        addContent(R.layout.activity_matches);
+        setContentView(R.layout.activity_matches);
         matchList = findViewById(R.id.matchList);
         userKey = new ArrayList<>();
         userList = new ArrayList<>();
+
+        final boolean hasConfirmation = getIntent().getBooleanExtra("hasConfirmation", false);
+
+        findViewById(R.id.match).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (hasConfirmation)
+                    showConfirmDialog(Matches.class);
+                else {
+                    v.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
+                    Intent n = new Intent(Matches.this, Matches.class);
+                    startActivity(n);
+                    finish();
+                }
+            }
+        });
+        findViewById(R.id.search).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (hasConfirmation)
+                    showConfirmDialog(ProfileSelf.class);
+                else {
+                    v.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
+                    Intent n = new Intent(Matches.this, NearYou.class);
+                    startActivity(n);
+                    finish();
+                }
+            }
+        });
+
+        findViewById(R.id.account).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (hasConfirmation)
+                    showConfirmDialog(ProfileSelf.class);
+                else {
+                    v.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
+                    Intent n = new Intent(Matches.this, ProfileSelf.class);
+                    startActivity(n);
+                    finish();
+                }
+            }
+        });
+
         fillList();
     }
 
@@ -171,5 +218,30 @@ public class Matches extends Template {
                 }
             });
         }
+    }
+    private void showConfirmDialog(final Class target) {
+        final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+
+        alertDialogBuilder
+                .setTitle("Descartar cambios")
+                .setMessage("Los cambios realizados no se guardarán")
+                .setCancelable(false)
+                .setPositiveButton("Descartar", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int id) {
+                        Intent n = new Intent(Matches.this, target);
+                        startActivity(n);
+                        finish();
+                    }
+                })
+                .setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+
+        AlertDialog alertDialog = alertDialogBuilder.create();
+        alertDialog.show();
     }
 }
